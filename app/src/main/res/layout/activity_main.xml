@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    tools:context="com.example.bsy.initialquiz_1.MainActivity">
+
+    <EditText
+        android:id="@+id/answer_EditText"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="100dp"
+        android:gravity="center"
+        android:textSize="15dp"/>
+
+    <TextView
+        android:id="@+id/hint_TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="힌트"
+        android:textSize="15dp"
+        android:layout_gravity="center"
+        />
+
+    <Button
+        android:id="@+id/confirm_Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="확인"/>
+
+</LinearLayout>
