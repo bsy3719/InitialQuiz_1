@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    >
+
+    <Button
+        android:id="@+id/ad_Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:text="광고"/>
+
+    <EditText
+        android:id="@+id/answer_EditText"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:textSize="15dp"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:id="@+id/initial_TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:text="초성"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/hint1_TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="힌트1"
+            android:textSize="15dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/hint2_TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="힌트2"
+            android:textSize="15dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/confirm_Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="확인"/>
+
+</LinearLayout>
+
+</layout>

@@ -8,50 +8,68 @@ import java.util.ArrayList;
 
 public class Quiz {
 
-    private ArrayList<Quiz> quizs = new ArrayList<Quiz>() ;
+    private int type;
+    private int id;
+    private String answer;
+    private String hint_1;
+    private String hint_2;
 
-    String s_answer;
-    String s_hint;
+    public Quiz() {}
 
-    public ArrayList<Quiz> getQuizs() {
-        return quizs;
+    public Quiz(String answer) {
+        this.answer = answer;
     }
 
-    public void setQuizs(ArrayList<Quiz> quizs) {
-        this.quizs = quizs;
+    public Quiz(String answer, String hint_1, String hint_2) {
+        this.answer = answer;
+        this.hint_1 = hint_1;
+        this.hint_2 = hint_2;
     }
 
-    public String getS_answer() {
-        return s_answer;
+    public Quiz(int id, String answer, String hint_1, String hint_2) {
+        this.id = id;
+        this.answer = answer;
+        this.hint_1 = hint_1;
+        this.hint_2 = hint_2;
     }
 
-    public void setS_answer(String s_answer) {
-        this.s_answer = s_answer;
+    public int getType() {
+        return type;
     }
 
-    public String getS_hint() {
-        return s_hint;
+    public void setType(int type) {
+        this.type = type;
     }
 
-    public void setS_hint(String s_hint) {
-        this.s_hint = s_hint;
+    public String getAnswer() {
+        return answer;
     }
 
-    //리스트 추가시
-    public void addItem(String answer, String hint){
-       Quiz quiz = new Quiz();
-
-        quiz.setS_answer(answer);
-        quiz.setS_hint(hint);
-        quizs.add(quiz);
-
+    public void setAnswer(String answer) {
+        this.answer = answer;
     }
 
-    public void setItem(){
-        addItem("선풍기", "ㅅㅍㄱ");
-        addItem("컴퓨터", "ㅋㅍㅌ");
-        addItem("키보드","ㅋㅂㄷ");
-        addItem("모니터", "ㅁㄴㅌ");
+    public int getId() {
+        return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getHint_1() {
+        return hint_1;
+    }
+
+    public void setHint_1(String hint_1) {
+        this.hint_1 = hint_1;
+    }
+
+    public String getHint_2() {
+        return hint_2;
+    }
+
+    public void setHint_2(String hint_2) {
+        this.hint_2 = hint_2;
+    }
 }
