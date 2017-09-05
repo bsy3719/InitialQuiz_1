@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+<LinearLayout
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ㅁㅎㅂ"
+            android:textSize="40dp"
+            android:textColor="@color/colorBlack"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="70dp"
+            android:gravity="center"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="초성퀴즈"
+            android:textSize="20dp"
+            android:layout_marginBottom="40dp"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/start_Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="시작"
+            android:textStyle="bold"
+            android:textColor="@color/colorWhite"
+            android:background="@color/colorgray"
+            android:gravity="center"/>
+
+
+</LinearLayout>
+
+</layout>

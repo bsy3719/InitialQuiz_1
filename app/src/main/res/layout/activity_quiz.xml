@@ -17,7 +17,13 @@
             android:id="@+id/reward_Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             android:text="리워드광고"/>
+        <TextView
+            android:id="@+id/answer_TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"/>
 
         <Button
             android:id="@+id/interstitial_Button"
@@ -25,12 +31,19 @@
             android:layout_height="wrap_content"
             android:text="전면광고"/>
 
+        <TextView
+            android:id="@+id/timer_TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"/>
+
         <ProgressBar
             android:id="@+id/timer_ProgressBar"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             style="?android:attr/progressBarStyleHorizontal"
             android:max="60"
+            android:progress="60"
             />
 
     </LinearLayout>

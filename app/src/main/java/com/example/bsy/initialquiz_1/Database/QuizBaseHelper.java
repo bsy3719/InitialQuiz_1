@@ -6,12 +6,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-import android.widget.Toast;
 
-import com.example.bsy.initialquiz_1.Quiz;
+import com.example.bsy.initialquiz_1.Item.Quiz;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by bsy on 2017-08-31.

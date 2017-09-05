@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="ㄱㄱ"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="발자국"/>
+
+        <TextView
+            android:id="@+id/answer_TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="0개"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/restart_Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="다시하기"/>
+
+            <Button
+                android:id="@+id/home_Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="홈으로"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    </layout>
