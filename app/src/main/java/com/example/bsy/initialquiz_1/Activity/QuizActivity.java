@@ -206,6 +206,7 @@ public class QuizActivity extends AppCompatActivity {
         mBinding.answerTextView.setText(String.valueOf(answerCnt));
 
         thread.interrupt();
+        thread = null;
     }
 
     /*// Create the game timer, which counts down to the end of the level
