@@ -7,6 +7,7 @@ package com.example.bsy.initialquiz_1.Item;
 public class MethodUtils {
 
     private volatile static MethodUtils methodInstance;//volatile : 멀티스레드환경에서 변수 사용하기
+    private int playCnt = 0;
 
     private MethodUtils() {   //생성자
     }
@@ -44,40 +45,30 @@ public class MethodUtils {
                 char jong = (char) ((uniVal % 28) + 0x11a7);
 
                 if (cho != 4519) {
-
                     System.out.print(cho + " ");
                     resultStr = resultStr + cho;
-
                 }
-
                 if (jung != 4519) {
-
                     //System.out.print(jung+" ");
-
                 }
-
                 if (jong != 4519) {
-
                     //System.out.print(jong+" ");
-
                 }
-
 
             } else {
-
                 // 한글이 아닐경우
-
                 comVal = (char) (comVal + 0xAC00);
-
                 resultStr = resultStr + comVal;
-
             }
-
         }
-
-
         return resultStr;
-
     }
 
+    public int getPlayCnt() {
+        return playCnt;
+    }
+
+    public void setPlayCnt(int playCnt) {
+        this.playCnt = playCnt;
+    }
 }

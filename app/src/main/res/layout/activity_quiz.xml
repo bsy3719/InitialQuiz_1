@@ -56,7 +56,9 @@
         android:layout_marginBottom="10dp"
         android:layout_marginTop="50dp"
         android:gravity="center"
-        android:textSize="15dp"/>
+        android:textSize="15dp"
+        android:inputType="text"
+        android:windowSoftInputMode="stateAlwaysVisible"/>
 
     <LinearLayout
         android:orientation="horizontal"

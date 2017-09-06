@@ -2,16 +2,16 @@ package com.example.bsy.initialquiz_1.Activity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.os.Handler;
-import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,6 +45,7 @@ public class QuizActivity extends AppCompatActivity {
 
     private Handler handler; // Thread 에서 화면에 그리기 위해서 필요
     private Thread thread;
+    private Boolean isRunning = true;
     private static final String TAG = "@@@";
 
     @Override
@@ -53,29 +54,14 @@ public class QuizActivity extends AppCompatActivity {
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_quiz);
 
         Log.d(TAG, "onCreate");
-        settingQuiz();
+        settingDB();
 
-        //전면광고
-        mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
-        AdRequest request = new AdRequest.Builder().build();
-        mInterstitialAd.loadAd(request);
-
-        //전면광고 reload하는 부분
-        mInterstitialAd.setAdListener(new AdListener() {
+        //완료버튼으로 처리하기
+        mBinding.answerEditText.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        mBinding.answerEditText.setOnEditorActionListener(new TextView.OnEditorActionListener()
+        {
             @Override
-            public void onAdClosed() {
-                // Load the next interstitial.
-                mInterstitialAd.loadAd(new AdRequest.Builder().build());
-            }
-
-        });
-
-        mInterstitialAd.loadAd(new AdRequest.Builder().build());
-
-        mBinding.confirmButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
 
                 String answer = mBinding.answerEditText.getText().toString();
                 Toast toast;
@@ -99,24 +85,20 @@ public class QuizActivity extends AppCompatActivity {
                     toast.show();
 
                 }
+
+                return true;
             }
+
         });
 
         //동영상 광고 버튼
-        mBinding.rewardButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-
-        //전면 광고 버튼
         mBinding.interstitialButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (mInterstitialAd.isLoaded()) {
-                    mInterstitialAd.show();
-                }
+                Intent intent = new Intent(QuizActivity.this, ResultActivity.class);
+                intent.putExtra("answerCnt", String.valueOf(answerCnt));
+                startActivity(intent);
+                finish();
             }
         });
 
@@ -132,12 +114,13 @@ public class QuizActivity extends AppCompatActivity {
 
     private void runProgressBar(){
         handler = new Handler();
+        isRunning = true;
 
         // 앱시작시, Thread 를 시작해서 ProgressBar 를 증가시키기
         thread = new Thread(new Runnable() {
             @Override
             public void run() { // Thread 로 작업할 내용을 구현
-                while(true) {
+                while(isRunning) {
                     try {
 
                         //Log.d(TAG, "쓰레드 실행중");
@@ -165,6 +148,7 @@ public class QuizActivity extends AppCompatActivity {
                         Intent intent = new Intent(QuizActivity.this, ResultActivity.class);
                         intent.putExtra("answerCnt", String.valueOf(answerCnt));
                         startActivity(intent);
+                        finish();
                         break;
                     }
 
@@ -190,7 +174,7 @@ public class QuizActivity extends AppCompatActivity {
 
     }
 
-    private void settingQuiz() {
+    private void settingDB() {
         //DB활성화
         QuizBaseHelper quizBaseHelper = new QuizBaseHelper(this);
 
@@ -205,37 +189,10 @@ public class QuizActivity extends AppCompatActivity {
         mBinding.timerTextView.setText(String.valueOf(time));
         mBinding.answerTextView.setText(String.valueOf(answerCnt));
 
+        isRunning = false;
         thread.interrupt();
         thread = null;
     }
-
-    /*// Create the game timer, which counts down to the end of the level
-    // and shows the "retry" button.
-    private void createTimer(long time) {
-        final TextView textView = ((TextView) findViewById(R.id.timer));
-        if (mCountDownTimer != null) {
-            mCountDownTimer.cancel();
-        }
-        mCountDownTimer = new CountDownTimer(time * 1000, 50) {
-            @Override
-            public void onTick(long millisUnitFinished) {
-                mTimeRemaining = ((millisUnitFinished / 1000) + 1);
-                textView.setText("seconds remaining: " + mTimeRemaining);
-            }
-
-            @Override
-            public void onFinish() {
-                if (mRewardedVideoAd.isLoaded()) {
-                    mShowVideoButton.setVisibility(View.VISIBLE);
-                }
-                textView.setText("You Lose!");
-                addCoins(GAME_OVER_REWARD);
-                mRetryButton.setVisibility(View.VISIBLE);
-                mGameOver = true;
-            }
-        };
-        mCountDownTimer.start();
-    }*/
 
     @Override
     protected void onStart() {
@@ -248,6 +205,15 @@ public class QuizActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         Log.d(TAG, "onResume");
+
+        //키보드 자동실행
+        mBinding.answerEditText.postDelayed(new Runnable() {
+            public void run() {
+                InputMethodManager manager = (InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
+                manager.showSoftInput(mBinding.answerEditText, 0);
+            }
+        }, 100);
+
         super.onResume();
     }
 
@@ -260,10 +226,14 @@ public class QuizActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         Log.d(TAG, "onStop");
-        resetQuiz();
         super.onStop();
     }
 
-
+    @Override
+    protected void onDestroy() {
+        Log.d(TAG, "onDestroy");
+        resetQuiz();
+        super.onDestroy();
+    }
 
 }
