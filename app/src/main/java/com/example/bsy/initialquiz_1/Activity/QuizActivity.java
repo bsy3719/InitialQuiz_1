@@ -140,7 +140,7 @@ public class QuizActivity extends AppCompatActivity {
                 while(true) {
                     try {
 
-                        Log.d(TAG, "쓰레드 실행중");
+                        //Log.d(TAG, "쓰레드 실행중");
 
                         Thread.sleep(1000); // 시간지연
 
@@ -165,6 +165,7 @@ public class QuizActivity extends AppCompatActivity {
                         Intent intent = new Intent(QuizActivity.this, ResultActivity.class);
                         intent.putExtra("answerCnt", String.valueOf(answerCnt));
                         startActivity(intent);
+                        break;
                     }
 
                 } // end of while
