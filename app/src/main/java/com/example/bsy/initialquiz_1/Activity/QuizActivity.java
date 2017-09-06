@@ -5,12 +5,14 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.bsy.initialquiz_1.Database.QuizBaseHelper;
@@ -204,6 +206,34 @@ public class QuizActivity extends AppCompatActivity {
 
         thread.interrupt();
     }
+
+    /*// Create the game timer, which counts down to the end of the level
+    // and shows the "retry" button.
+    private void createTimer(long time) {
+        final TextView textView = ((TextView) findViewById(R.id.timer));
+        if (mCountDownTimer != null) {
+            mCountDownTimer.cancel();
+        }
+        mCountDownTimer = new CountDownTimer(time * 1000, 50) {
+            @Override
+            public void onTick(long millisUnitFinished) {
+                mTimeRemaining = ((millisUnitFinished / 1000) + 1);
+                textView.setText("seconds remaining: " + mTimeRemaining);
+            }
+
+            @Override
+            public void onFinish() {
+                if (mRewardedVideoAd.isLoaded()) {
+                    mShowVideoButton.setVisibility(View.VISIBLE);
+                }
+                textView.setText("You Lose!");
+                addCoins(GAME_OVER_REWARD);
+                mRetryButton.setVisibility(View.VISIBLE);
+                mGameOver = true;
+            }
+        };
+        mCountDownTimer.start();
+    }*/
 
     @Override
     protected void onStart() {
