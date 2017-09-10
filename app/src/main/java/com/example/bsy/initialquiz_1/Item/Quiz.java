@@ -8,8 +8,8 @@ import java.util.ArrayList;
 
 public class Quiz {
 
-    private int type;
     private int id;
+    private int type;
     private String answer;
     private String hint_1;
     private String hint_2;
@@ -20,14 +20,16 @@ public class Quiz {
         this.answer = answer;
     }
 
-    public Quiz(String answer, String hint_1, String hint_2) {
+    public Quiz(int type, String answer, String hint_1, String hint_2) {
+        this.type = type;
         this.answer = answer;
         this.hint_1 = hint_1;
         this.hint_2 = hint_2;
     }
 
-    public Quiz(int id, String answer, String hint_1, String hint_2) {
+    public Quiz(int id, int type, String answer, String hint_1, String hint_2) {
         this.id = id;
+        this.type = type;
         this.answer = answer;
         this.hint_1 = hint_1;
         this.hint_2 = hint_2;

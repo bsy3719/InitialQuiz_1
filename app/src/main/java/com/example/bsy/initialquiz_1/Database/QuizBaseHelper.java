@@ -22,6 +22,7 @@ public class QuizBaseHelper extends SQLiteOpenHelper {
 
     private static  final String TABLE = "quizs";
     private static final String ID = "id";
+    private static final String TYPE = "type";
     private static final String ANSWER = "answer";
     private static final String HINT_1 = "hint_1";
     private static final String HINT_2 = "hint_2";
@@ -36,11 +37,10 @@ public class QuizBaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table " + TABLE+"("+
                 ID+" integer primary key autoincrement, " +
+                TYPE+","+
                 ANSWER+","+
                 HINT_1+","+
                 HINT_2+")");
-
-        Log.d("@@@", "DB onCreate");
     }
 
     //버전이 업데이트 되는 경우
@@ -55,10 +55,10 @@ public class QuizBaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
+        values.put(TYPE, quiz.getType());
         values.put(ANSWER, quiz.getAnswer());
         values.put(HINT_1, quiz.getHint_1());
         values.put(HINT_2, quiz.getHint_2());
-
         db.insert(TABLE, null, values);
         db.close();
     }
@@ -75,9 +75,10 @@ public class QuizBaseHelper extends SQLiteOpenHelper {
             cursor.moveToFirst();
 
         Quiz quiz = new Quiz(Integer.parseInt(cursor.getString(0)),
-                cursor.getString(1),
+                Integer.parseInt(cursor.getString(1)),
                 cursor.getString(2),
-                cursor.getString(3));
+                cursor.getString(3),
+                cursor.getString(4));
 
         return quiz;
 
@@ -97,9 +98,10 @@ public class QuizBaseHelper extends SQLiteOpenHelper {
             do {
                 Quiz quiz= new Quiz();
                 quiz.setId(Integer.parseInt(cursor.getString(0)));
-                quiz.setAnswer(cursor.getString(1));
-                quiz.setHint_1(cursor.getString(2));
-                quiz.setHint_2(cursor.getString(3));
+                quiz.setType(Integer.parseInt(cursor.getString(1)));
+                quiz.setAnswer(cursor.getString(2));
+                quiz.setHint_1(cursor.getString(3));
+                quiz.setHint_2(cursor.getString(4));
                 // Adding contact to list
                 quizs.add(quiz);
             } while (cursor.moveToNext());
@@ -114,6 +116,7 @@ public class QuizBaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
+        values.put(TYPE, quiz.getType());
         values.put(ANSWER, quiz.getAnswer());
         values.put(HINT_1, quiz.getHint_1());
         values.put(HINT_2, quiz.getHint_2());
@@ -131,7 +134,7 @@ public class QuizBaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    // Contact 정보 숫자
+    // Quiz 정보 숫자
     public int getQuizCount() {
         String countQuery = "SELECT  * FROM " + TABLE;
         SQLiteDatabase db = this.getReadableDatabase();

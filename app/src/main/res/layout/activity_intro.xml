@@ -1,44 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <layout
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-<LinearLayout
-    android:orientation="vertical"
-    android:gravity="center_horizontal"
+<RelativeLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorMainBlue">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <com.ssomai.android.scalablelayout.ScalableLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ㅁㅎㅂ"
-            android:textSize="40dp"
-            android:textColor="@color/colorBlack"
-            android:layout_marginBottom="20dp"
-            android:layout_marginTop="70dp"
-            android:gravity="center"
-            />
+            app:scale_base_height="1600"
+            app:scale_base_width="1080"
+            >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="초성퀴즈"
-            android:textSize="20dp"
-            android:layout_marginBottom="40dp"
-            android:gravity="center"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/light"
+                    app:scale_top="200"
+                    app:scale_left="540"
+                    app:scale_height="1080"
+                    app:scale_width="1080"
+                    app:scale_textsize="65"
+                    app:scale_left_baseposition="center"/>
 
-        <Button
-            android:id="@+id/start_Button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="시작"
-            android:textStyle="bold"
-            android:textColor="@color/colorWhite"
-            android:background="@color/colorgray"
-            android:gravity="center"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="초 성 퀴 즈"
+                    android:gravity="center"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold"
+                    app:scale_top="300"
+                    app:scale_left="540"
+                    app:scale_height="150"
+                    app:scale_width="600"
+                    app:scale_textsize="100"
+                    app:scale_left_baseposition="center"
+                    />
 
+                <Button
+                    android:id="@+id/start_Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="시작"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorWhite"
+                    android:background="@color/colorMainGreen"
+                    app:scale_top="1200"
+                    app:scale_left="540"
+                    app:scale_height="120"
+                    app:scale_width="350"
+                    app:scale_textsize="55"
+                    app:scale_left_baseposition="center"
+                    />
 
-</LinearLayout>
+        </com.ssomai.android.scalablelayout.ScalableLayout>
+
+</RelativeLayout>
 
 </layout>

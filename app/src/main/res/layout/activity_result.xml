@@ -1,53 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <layout
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:text="ㄱㄱ"
-            />
+        android:layout_height="match_parent">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:text="발자국"/>
-
-        <TextView
-            android:id="@+id/answer_TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:text="0개"/>
-
-        <LinearLayout
+        <com.ssomai.android.scalablelayout.ScalableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center">
+            app:scale_base_height="1600"
+            app:scale_base_width="1080">
 
-            <Button
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ㄱㄱ"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold"
+                android:gravity="center"
+                app:scale_textsize="80"
+                app:scale_top="70"
+                app:scale_left="540"
+                app:scale_height="100"
+                app:scale_width="200"
+                app:scale_left_baseposition="center"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/sketchbook"
+                app:scale_top="150"
+                app:scale_left="0"
+                app:scale_height="900"
+                app:scale_width="1080"/>
+
+            <TextView
+                android:id="@+id/result_TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="15개"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold"
+                android:gravity="center"
+                app:scale_textsize="80"
+                app:scale_top="400"
+                app:scale_left="540"
+                app:scale_height="100"
+                app:scale_width="200"
+                app:scale_left_baseposition="center"/>
+
+            <ListView
+                android:id="@+id/result_ListView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:scale_top="550"
+                app:scale_left="540"
+                app:scale_height="350"
+                app:scale_width="400"
+                app:scale_left_baseposition="center"
+                />
+
+
+            <ImageView
                 android:id="@+id/restart_Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="다시하기"/>
+                android:background="@drawable/ic_refresh_black_24dp"
+                app:scale_top="1100"
+                app:scale_left="360"
+                app:scale_height="120"
+                app:scale_width="120"
+                app:scale_left_baseposition="center"
+                />
 
-            <Button
+            <ImageView
                 android:id="@+id/home_Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="홈으로"/>
+                android:background="@drawable/ic_home_black_24dp"
+                app:scale_top="1100"
+                app:scale_left="720"
+                app:scale_height="120"
+                app:scale_width="120"
+                app:scale_left_baseposition="center"
+                />
 
-        </LinearLayout>
+        </com.ssomai.android.scalablelayout.ScalableLayout>
 
-    </LinearLayout>
+    </RelativeLayout>
 
     </layout>

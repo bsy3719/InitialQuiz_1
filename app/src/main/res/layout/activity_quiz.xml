@@ -1,106 +1,234 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-<LinearLayout
+<RelativeLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center_horizontal"
-    >
+    android:layout_height="match_parent">
 
-    <LinearLayout
+    <com.ssomai.android.scalablelayout.ScalableLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:scale_base_height="1600"
+        app:scale_base_width="1080">
 
-        <Button
-            android:id="@+id/reward_Button"
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:text="리워드광고"/>
-        <TextView
-            android:id="@+id/answer_TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0"/>
-
-        <Button
-            android:id="@+id/interstitial_Button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="전면광고"/>
+            android:background="@drawable/ic_timer_black_24dp"
+            app:scale_top="80"
+            app:scale_left="40"
+            app:scale_height="70"
+            app:scale_width="70"
+            app:scale_top_baseposition="center"/>
 
         <TextView
             android:id="@+id/timer_TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="60"/>
+            android:textColor="@color/colorBlack"
+            android:gravity="center"
+            android:text="60s"
+            app:scale_top="30"
+            app:scale_left="110"
+            app:scale_height="100"
+            app:scale_width="100"
+            app:scale_textsize="55"/>
 
         <ProgressBar
             android:id="@+id/timer_ProgressBar"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
             style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:max="60"
             android:progress="60"
+            app:scale_top="30"
+            app:scale_left="230"
+            app:scale_height="100"
+            app:scale_width="620" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_dollar_black_24dp"
+            app:scale_top="80"
+            app:scale_left="870"
+            app:scale_height="70"
+            app:scale_width="70"
+            app:scale_top_baseposition="center"/>
+
+        <TextView
+            android:id="@+id/coin_TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorBlack"
+            android:gravity="center"
+            android:text="30"
+            app:scale_top="30"
+            app:scale_left="940"
+            app:scale_height="100"
+            app:scale_width="100"
+            app:scale_textsize="55"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/sketchbook"
+            app:scale_top="150"
+            app:scale_left="0"
+            app:scale_height="900"
+            app:scale_width="1080"/>
+
+        <TextView
+            android:id="@+id/category_TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="영화"
+            android:textColor="@color/colorBlack"
+            android:textStyle="bold"
+            android:gravity="center"
+            app:scale_textsize="80"
+            app:scale_top="400"
+            app:scale_left="540"
+            app:scale_height="100"
+            app:scale_width="300"
+            app:scale_left_baseposition="center"/>
+
+        <TextView
+            android:id="@+id/answer_TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/colorWhite"
+            android:background="@color/colorMainGreen"
+            android:text="0"
+            app:scale_textsize="60"
+            app:scale_top="400"
+            app:scale_left="850"
+            app:scale_height="100"
+            app:scale_width="100"/>
+
+        <EditText
+            android:id="@+id/answer_EditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="도둑들"
+            android:textColor="@color/colorBlack"
+            android:gravity="center"
+            android:inputType="text"
+            app:scale_textsize="60"
+            app:scale_top="520"
+            app:scale_left="540"
+            app:scale_height="150"
+            app:scale_width="500"
+            app:scale_left_baseposition="center"
             />
-
-    </LinearLayout>
-
-
-    <EditText
-        android:id="@+id/answer_EditText"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="50dp"
-        android:gravity="center"
-        android:textSize="15dp"
-        android:inputType="text"
-        android:windowSoftInputMode="stateAlwaysVisible"/>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp">
 
         <TextView
             android:id="@+id/initial_TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:text="초성"
-            android:textSize="15dp" />
+            android:text="ㄷㄷㄷ"
+            android:textColor="@color/colorBlack"
+            android:gravity="center"
+            app:scale_textsize="80"
+            app:scale_top="700"
+            app:scale_left="540"
+            app:scale_height="100"
+            app:scale_width="300"
+            app:scale_left_baseposition="center"/>
 
         <TextView
             android:id="@+id/hint1_TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="힌트1"
-            android:textSize="15dp"
-            android:layout_gravity="center"
-            android:layout_weight="1"/>
+            android:text="한국영화"
+            android:textColor="@color/colorBlack"
+            android:gravity="center"
+            app:scale_textsize="50"
+            app:scale_top="830"
+            app:scale_left="270"
+            app:scale_height="100"
+            app:scale_width="300"
+            app:scale_left_baseposition="center"
+            />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorGray"
+            app:scale_top="830"
+            app:scale_left="540"
+            app:scale_height="100"
+            app:scale_width="3"
+            app:scale_left_baseposition="center"/>
 
         <TextView
             android:id="@+id/hint2_TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="힌트2"
-            android:textSize="15dp"
-            android:layout_gravity="center"
-            android:layout_weight="1"/>
+            android:text="1000만"
+            android:textColor="@color/colorBlack"
+            android:gravity="center"
+            app:scale_textsize="50"
+            app:scale_top="830"
+            app:scale_left="810"
+            app:scale_height="100"
+            app:scale_width="300"
+            app:scale_left_baseposition="center"
+            />
 
-    </LinearLayout>
+        <Button
+            android:id="@+id/confirm_Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="확인"
+            android:textStyle="bold"
+            android:textColor="@color/colorWhite"
+            android:background="@color/colorMainGreen"
+            app:scale_top="1100"
+            app:scale_left="540"
+            app:scale_height="120"
+            app:scale_width="350"
+            app:scale_textsize="55"
+            app:scale_left_baseposition="center"/>
 
-    <Button
-        android:id="@+id/confirm_Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="확인"/>
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorGray"
+            app:scale_top="1300"
+            app:scale_left="540"
+            app:scale_height="3"
+            app:scale_width="600"
+            app:scale_left_baseposition="center"/>
 
-</LinearLayout>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_vpn_key_black_24dp"
+            app:scale_top="1350"
+            app:scale_left="270"
+            app:scale_height="120"
+            app:scale_width="120"
+            app:scale_left_baseposition="center"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_lightbulb_outline_black_24dp"
+            app:scale_top="1350"
+            app:scale_left="810"
+            app:scale_height="120"
+            app:scale_width="120"
+            app:scale_left_baseposition="center"
+            />
+
+    </com.ssomai.android.scalablelayout.ScalableLayout>
+
+</RelativeLayout>
 
 </layout>

@@ -20,11 +20,9 @@ import com.example.bsy.initialquiz_1.Item.MethodUtils;
 import com.example.bsy.initialquiz_1.Item.Quiz;
 import com.example.bsy.initialquiz_1.R;
 import com.example.bsy.initialquiz_1.databinding.ActivityQuizBinding;
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.InterstitialAd;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class QuizActivity extends AppCompatActivity {
@@ -35,17 +33,16 @@ public class QuizActivity extends AppCompatActivity {
 
     private MethodUtils methodUtils = MethodUtils.getInstance();
 
-    private InterstitialAd mInterstitialAd;
-
     private int mCurrentIndex = 0;
     private int time = 60; // progressBar 값
     private int add = 1; // 증가량, 방향
     private int answerCnt = 0;
-    private int adCnt = 0;
 
     private Handler handler; // Thread 에서 화면에 그리기 위해서 필요
     private Thread thread;
     private Boolean isRunning = true;
+    private Toast toast;
+
     private static final String TAG = "@@@";
 
     @Override
@@ -53,7 +50,6 @@ public class QuizActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_quiz);
 
-        Log.d(TAG, "onCreate");
         settingDB();
 
         //완료버튼으로 처리하기
@@ -64,7 +60,37 @@ public class QuizActivity extends AppCompatActivity {
             public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
 
                 String answer = mBinding.answerEditText.getText().toString();
-                Toast toast;
+
+                //정답을 맞췄을 경우
+                if (answer.equals(quizs.get(mCurrentIndex).getAnswer())) {
+
+                    answerCnt = ++answerCnt;
+                    mBinding.answerTextView.setText(String.valueOf(answerCnt));
+
+                    toast = Toast.makeText(QuizActivity.this, "정답!!!", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.CENTER, 0, 150);
+                    toast.show();
+
+                    updateQuiz();
+
+                } else {
+
+                    toast = Toast.makeText(QuizActivity.this, "오답!!!", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.CENTER, 0, 150);
+                    toast.show();
+
+                }
+
+                return true;
+            }
+
+        });
+
+        mBinding.confirmButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String answer = mBinding.answerEditText.getText().toString();
 
                 //정답을 맞췄을 경우
                 if (answer.equals(quizs.get(mCurrentIndex).getAnswer())) {
@@ -86,19 +112,6 @@ public class QuizActivity extends AppCompatActivity {
 
                 }
 
-                return true;
-            }
-
-        });
-
-        //동영상 광고 버튼
-        mBinding.interstitialButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(QuizActivity.this, ResultActivity.class);
-                intent.putExtra("answerCnt", String.valueOf(answerCnt));
-                startActivity(intent);
-                finish();
             }
         });
 
@@ -137,7 +150,7 @@ public class QuizActivity extends AppCompatActivity {
                             @Override
                             public void run() { // 화면에 변경하는 작업을 구현
                                 mBinding.timerProgressBar.setProgress(time);
-                                mBinding.timerTextView.setText(String.valueOf(time));
+                                mBinding.timerTextView.setText(String.valueOf(time)+"s");
                             }
                         });
 
@@ -163,11 +176,21 @@ public class QuizActivity extends AppCompatActivity {
     private void updateQuiz() {
 
         Random random = new Random();
-
+        mCurrentIndex = random.nextInt(quizs.size());
         mBinding.answerEditText.setText("");
 
-        //mCurrentIndex = (mCurrentIndex + 1) % quizs.size();
-        mCurrentIndex = random.nextInt(quizs.size());
+        switch (quizs.get(mCurrentIndex).getType()){
+            case 1:
+                mBinding.categoryTextView.setText("영화");
+                break;
+            case 2:
+                mBinding.categoryTextView.setText("음식");
+                break;
+            case 3:
+                mBinding.categoryTextView.setText("연예인");
+                break;
+        }
+
         mBinding.initialTextView.setText(methodUtils.getInitial(quizs.get(mCurrentIndex).getAnswer()));
         mBinding.hint1TextView.setText(quizs.get(mCurrentIndex).getHint_1());
         mBinding.hint2TextView.setText(quizs.get(mCurrentIndex).getHint_2());
