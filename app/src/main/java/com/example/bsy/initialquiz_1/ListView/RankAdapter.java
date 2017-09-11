@@ -52,7 +52,7 @@ public class RankAdapter extends BaseAdapter{
 
             rankTextView.setText(String.valueOf(getItem(position).getRank()));
             nameTextView.setText(getItem(position).getName());
-            cntTextView.setText(String.valueOf(getItem(position).getCnt()));
+            cntTextView.setText(String.valueOf(getItem(position).getCnt())+"개");
 
         }
 

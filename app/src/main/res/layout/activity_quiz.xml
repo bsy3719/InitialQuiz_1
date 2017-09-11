@@ -103,12 +103,12 @@
             android:textStyle="bold"
             android:textColor="@color/colorWhite"
             android:background="@color/colorMainGreen"
-            android:text="0"
+            android:text="0개"
             app:scale_textsize="60"
             app:scale_top="400"
-            app:scale_left="850"
+            app:scale_left="820"
             app:scale_height="100"
-            app:scale_width="100"/>
+            app:scale_width="150"/>
 
         <EditText
             android:id="@+id/answer_EditText"

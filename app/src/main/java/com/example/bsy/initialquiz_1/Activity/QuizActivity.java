@@ -65,7 +65,7 @@ public class QuizActivity extends AppCompatActivity {
                 if (answer.equals(quizs.get(mCurrentIndex).getAnswer())) {
 
                     answerCnt = ++answerCnt;
-                    mBinding.answerTextView.setText(String.valueOf(answerCnt));
+                    mBinding.answerTextView.setText(String.valueOf(answerCnt)+"개");
 
                     toast = Toast.makeText(QuizActivity.this, "정답!!!", Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 150);
@@ -96,7 +96,7 @@ public class QuizActivity extends AppCompatActivity {
                 if (answer.equals(quizs.get(mCurrentIndex).getAnswer())) {
 
                     answerCnt = ++answerCnt;
-                    mBinding.answerTextView.setText(String.valueOf(answerCnt));
+                    mBinding.answerTextView.setText(String.valueOf(answerCnt)+"개");
 
                     toast = Toast.makeText(QuizActivity.this, String.valueOf(quizs.get(mCurrentIndex).getId()) +"번문제 정답!!!", Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 150);
@@ -210,7 +210,7 @@ public class QuizActivity extends AppCompatActivity {
 
         mBinding.timerProgressBar.setProgress(time);
         mBinding.timerTextView.setText(String.valueOf(time));
-        mBinding.answerTextView.setText(String.valueOf(answerCnt));
+        mBinding.answerTextView.setText(String.valueOf(answerCnt)+"개");
 
         isRunning = false;
         thread.interrupt();

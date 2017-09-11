@@ -2,5 +2,6 @@
     <string name="app_name">InitialQuiz_1</string>
     <string name="app_key">ca-app-pub-4711336970766023~9674070775</string>
     <string name="reward_ad">ca-app-pub-4711336970766023/9889870801</string>
-    <string name="test_ad">ca-app-pub-3940256099942544/5224354917</string>
+    <string name="test_reward_ad">ca-app-pub-3940256099942544/5224354917</string>
+    <string name="test_interstitial_ad">ca-app-pub-3940256099942544/1033173712</string>
 </resources>

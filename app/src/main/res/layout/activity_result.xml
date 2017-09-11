@@ -2,16 +2,19 @@
 
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:ads="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
 
         <com.ssomai.android.scalablelayout.ScalableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:scale_base_height="1600"
+            app:scale_base_height="1300"
             app:scale_base_width="1080">
 
             <TextView
@@ -37,6 +40,21 @@
                 app:scale_height="900"
                 app:scale_width="1080"/>
 
+            <EditText
+                android:id="@+id/name_EditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="이름없음"
+                android:textColor="@color/colorBlack"
+                android:gravity="center"
+                android:windowSoftInputMode="stateAlwaysHidden"
+                app:scale_textsize="45"
+                app:scale_top="570"
+                app:scale_left="250"
+                app:scale_height="150"
+                app:scale_width="250"
+                />
+
             <TextView
                 android:id="@+id/result_TextView"
                 android:layout_width="wrap_content"
@@ -46,13 +64,33 @@
                 android:textStyle="bold"
                 android:gravity="center"
                 app:scale_textsize="80"
-                app:scale_top="400"
-                app:scale_left="540"
+                app:scale_top="600"
+                app:scale_left="525"
                 app:scale_height="100"
-                app:scale_width="200"
-                app:scale_left_baseposition="center"/>
+                app:scale_width="200"/>
 
-            <ListView
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:background="@drawable/ic_check_circle_black_24dp"
+                app:scale_top="600"
+                app:scale_left="750"
+                app:scale_height="100"
+                app:scale_width="100"/>
+
+            <Button
+                android:id="@+id/confirm_Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                app:scale_top="575"
+                app:scale_left="725"
+                app:scale_height="150"
+                app:scale_width="150"
+                />
+
+            <!--<ListView
                 android:id="@+id/result_ListView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -61,7 +99,7 @@
                 app:scale_height="350"
                 app:scale_width="400"
                 app:scale_left_baseposition="center"
-                />
+                /> -->
 
 
             <ImageView
@@ -70,7 +108,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/ic_refresh_black_24dp"
                 app:scale_top="1100"
-                app:scale_left="360"
+                app:scale_left="270"
                 app:scale_height="120"
                 app:scale_width="120"
                 app:scale_left_baseposition="center"
@@ -82,13 +120,35 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/ic_home_black_24dp"
                 app:scale_top="1100"
-                app:scale_left="720"
+                app:scale_left="540"
+                app:scale_height="120"
+                app:scale_width="120"
+                app:scale_left_baseposition="center"
+                />
+
+            <ImageView
+                android:id="@+id/list_Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_format_list_numbered_black_24dp"
+                app:scale_top="1100"
+                app:scale_left="810"
                 app:scale_height="120"
                 app:scale_width="120"
                 app:scale_left_baseposition="center"
                 />
 
         </com.ssomai.android.scalablelayout.ScalableLayout>
+
+        <!--<com.google.android.gms.ads.AdView
+            android:id="@+id/adView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/banner_ad_unit_id">
+        </com.google.android.gms.ads.AdView>-->
 
     </RelativeLayout>
 

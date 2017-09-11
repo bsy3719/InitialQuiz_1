@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -25,19 +26,18 @@ public class ResultActivity extends AppCompatActivity {
     private InterstitialAd mInterstitialAd;
     private MethodUtils methodUtils = MethodUtils.getInstance();
 
-    private ArrayList<Rank> ranks = new ArrayList<>();
-    private RankAdapter rankAdapter = new RankAdapter();
+    private int mAnswerCnt;
+    private boolean mEnrollCheck = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_result);
 
-        mBinding.resultListView.setAdapter(rankAdapter);
-        setListView();
-
         Intent intent = getIntent();
-        mBinding.resultTextView.setText(intent.getStringExtra("answerCnt")+"개");
+        mAnswerCnt = Integer.parseInt(intent.getStringExtra("answerCnt"));
+
+        mBinding.resultTextView.setText(String.valueOf(mAnswerCnt)+"개");
 
         methodUtils.setPlayCnt(methodUtils.getPlayCnt() +1);
 
@@ -82,20 +82,47 @@ public class ResultActivity extends AppCompatActivity {
             }
         });
 
+        mBinding.listButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ResultActivity.this, ListActivity.class);
+                startActivity(intent);
+                //finish();
+
+            }
+        });
+
+        mBinding.confirmButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mEnrollCheck == false){
+                    addRank();
+                    Toast.makeText(ResultActivity.this, "기록이 등록되었습니다.", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(ResultActivity.this, "기록은 한번만 등록 가능합니다.", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
     }
 
-    private void setListView () {
-        RankBaseHelper rankBaseHelper = new RankBaseHelper(this);
+    private void addRank(){
 
-        ranks = rankBaseHelper.getThreeRank();
+        if (mEnrollCheck == false){
 
-        /*rankAdapter.addItem("승엽", 1);
-        rankAdapter.addItem("고동", 2);
-        rankAdapter.addItem("영한", 3);*/
+            Log.d("@@@", "DB 추가 완료");
+            String name = mBinding.nameEditText.getText().toString();
 
-        for (int i = 0; i < ranks.size(); i++){
-            rankAdapter.addItem(i+1, ranks.get(i).getName(), ranks.get(i).getCnt());
+            RankBaseHelper rankBaseHelper = new RankBaseHelper(this);
+
+            rankBaseHelper.addRank(new Rank(mAnswerCnt, name));
+
         }
+
+        mEnrollCheck = true;
+
+
 
     }
 
@@ -103,5 +130,11 @@ public class ResultActivity extends AppCompatActivity {
     public void onBackPressed() {
         finish();
         super.onBackPressed();
+    }
+
+    @Override
+    protected void onStop() {
+        addRank();
+        super.onStop();
     }
 }

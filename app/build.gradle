@@ -54,8 +54,8 @@ dependencies {
     compile 'com.ssomai:android.scalablelayout:2.1.6'
 }
 
-
-
-
 // ADD THIS AT THE BOTTOM
 apply plugin: 'com.google.gms.google-services'
+dependencies {
+    compile 'com.android.support.constraint:constraint-layout:+'
+}

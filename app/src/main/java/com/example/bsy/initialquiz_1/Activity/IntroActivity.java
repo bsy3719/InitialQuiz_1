@@ -36,6 +36,21 @@ public class IntroActivity extends AppCompatActivity {
             }
         });
 
+        mBinding.listButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(IntroActivity.this, ListActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        mBinding.adsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
         /*Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -67,15 +82,6 @@ public class IntroActivity extends AppCompatActivity {
             quizBaseHelper.addQuiz(new Quiz(3, "자스민", "커피", "부산대"));
             quizBaseHelper.addQuiz(new Quiz(2, "휴대폰", "삼성", "애플"));
             quizBaseHelper.addQuiz(new Quiz(1, "컴퓨터", "키보드", "마우스"));
-
-            RankBaseHelper rankBaseHelper = new RankBaseHelper(this);
-
-            rankBaseHelper.addRank(new Rank(1, "사용자1"));
-            rankBaseHelper.addRank(new Rank(3, "사용자3"));
-            rankBaseHelper.addRank(new Rank(10, "사용자10"));
-            rankBaseHelper.addRank(new Rank(4, "사용자4"));
-            rankBaseHelper.addRank(new Rank(5, "사용자5"));
-            rankBaseHelper.addRank(new Rank(11, "사용자11"));
 
             Log.d("@@@", "최초실행");
 
