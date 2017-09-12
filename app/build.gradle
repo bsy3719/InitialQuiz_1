@@ -44,13 +44,14 @@ dependencies {
 
 //파이어베이스
 dependencies {
-    compile 'com.google.firebase:firebase-core:11.0.1'
+    //compile 'com.google.firebase:firebase-core:11.0.1'
     compile "com.google.firebase:firebase-ads:11.0.1"
 }
 
 //라이브러리
 dependencies {
     compile 'com.ssomai:android.scalablelayout:2.1.6'
+    //compile 'com.tsengvn:Typekit:1.0.1'
 }
 
 //구글 플레이 서비스 관련

@@ -16,14 +16,40 @@
         app:scale_base_height="1572"
         app:scale_base_width="1080">
 
-    <ListView
-        android:id="@+id/result_ListView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:scale_top="0"
-        app:scale_left="0"
-        app:scale_height="1572"
-        app:scale_width="1080"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ㅅㅇ"
+            android:textColor="@color/colorBlack"
+            android:textStyle="bold"
+            android:gravity="center"
+            app:scale_textsize="80"
+            app:scale_top="70"
+            app:scale_left="540"
+            app:scale_height="100"
+            app:scale_width="200"
+            app:scale_left_baseposition="center"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/sketchbook"
+            app:scale_top="150"
+            app:scale_left="0"
+            app:scale_height="900"
+            app:scale_width="1080"/>
+
+        <ListView
+            android:id="@+id/result_ListView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:scale_top="400"
+            app:scale_left="540"
+            app:scale_height="500"
+            app:scale_width="800"
+            app:scale_left_baseposition="center"/>
+
+
 
     </com.ssomai.android.scalablelayout.ScalableLayout>
 

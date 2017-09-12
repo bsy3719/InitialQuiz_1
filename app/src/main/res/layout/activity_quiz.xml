@@ -82,6 +82,31 @@
             app:scale_height="900"
             app:scale_width="1080"/>
 
+        <ImageView
+            android:id="@+id/hint3_ImageView"
+            android:background="@drawable/postit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:scale_top="370"
+            app:scale_left="120"
+            app:scale_height="250"
+            app:scale_width="250"/>
+
+        <TextView
+            android:id="@+id/hint3_TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorBlack"
+            android:gravity="center"
+            android:visibility="invisible"
+            android:text="보석"
+            app:scale_textsize="50"
+            app:scale_top="370"
+            app:scale_left="120"
+            app:scale_height="250"
+            app:scale_width="250"/>
+
         <TextView
             android:id="@+id/category_TextView"
             android:layout_width="wrap_content"
@@ -120,11 +145,12 @@
             android:textColor="@color/colorBlack"
             android:gravity="center"
             android:inputType="text"
+            android:background="@drawable/border_rounded"
             app:scale_textsize="60"
-            app:scale_top="520"
+            app:scale_top="550"
             app:scale_left="540"
-            app:scale_height="150"
-            app:scale_width="500"
+            app:scale_height="130"
+            app:scale_width="300"
             app:scale_left_baseposition="center"
             />
 
@@ -208,6 +234,7 @@
             app:scale_left_baseposition="center"/>
 
         <ImageView
+            android:id="@+id/key_ImageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/ic_vpn_key_black_24dp"
@@ -219,6 +246,7 @@
             />
 
         <ImageView
+            android:id="@+id/light_ImageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/ic_lightbulb_outline_black_24dp"

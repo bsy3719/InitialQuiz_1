@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.bsy.initialquiz_1.Database.QuizBaseHelper;
+import com.example.bsy.initialquiz_1.Font.FontBaseActivity;
 import com.example.bsy.initialquiz_1.Item.MethodUtils;
 import com.example.bsy.initialquiz_1.Item.Quiz;
 import com.example.bsy.initialquiz_1.R;
@@ -121,6 +122,26 @@ public class QuizActivity extends AppCompatActivity {
             }
         });
 
+        mBinding.keyImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                //mBinding.initialTextView.setText(quizs.get(mCurrentIndex).getHint_answer());
+                mBinding.initialTextView.setText(methodUtils.getHintInitial(quizs.get(mCurrentIndex).getAnswer()));
+
+            }
+        });
+
+        mBinding.lightImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                mBinding.hint3TextView.setVisibility(View.VISIBLE);
+                mBinding.hint3ImageView.setVisibility(View.VISIBLE);
+
+            }
+        });
+
         /*handler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
@@ -200,6 +221,10 @@ public class QuizActivity extends AppCompatActivity {
         mBinding.initialTextView.setText(methodUtils.getInitial(quizs.get(mCurrentIndex).getAnswer()));
         mBinding.hint1TextView.setText(quizs.get(mCurrentIndex).getHint_1());
         mBinding.hint2TextView.setText(quizs.get(mCurrentIndex).getHint_2());
+        mBinding.hint3TextView.setText(quizs.get(mCurrentIndex).getHint_3());
+
+        mBinding.hint3TextView.setVisibility(View.INVISIBLE);
+        mBinding.hint3ImageView.setVisibility(View.INVISIBLE);
 
     }
 

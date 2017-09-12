@@ -13,26 +13,25 @@ public class Quiz {
     private String answer;
     private String hint_1;
     private String hint_2;
+    private String hint_3;
 
     public Quiz() {}
 
-    public Quiz(String answer) {
-        this.answer = answer;
-    }
-
-    public Quiz(int type, String answer, String hint_1, String hint_2) {
-        this.type = type;
-        this.answer = answer;
-        this.hint_1 = hint_1;
-        this.hint_2 = hint_2;
-    }
-
-    public Quiz(int id, int type, String answer, String hint_1, String hint_2) {
+    public Quiz(int id, int type, String answer, String hint_1, String hint_2, String hint_3) {
         this.id = id;
         this.type = type;
         this.answer = answer;
         this.hint_1 = hint_1;
         this.hint_2 = hint_2;
+        this.hint_3 = hint_3;
+    }
+
+    public Quiz(int type, String answer, String hint_1, String hint_2, String hint_3) {
+        this.type = type;
+        this.answer = answer;
+        this.hint_1 = hint_1;
+        this.hint_2 = hint_2;
+        this.hint_3 = hint_3;
     }
 
     public int getType() {
@@ -73,5 +72,13 @@ public class Quiz {
 
     public void setHint_2(String hint_2) {
         this.hint_2 = hint_2;
+    }
+
+    public String getHint_3() {
+        return hint_3;
+    }
+
+    public void setHint_3(String hint_3) {
+        this.hint_3 = hint_3;
     }
 }

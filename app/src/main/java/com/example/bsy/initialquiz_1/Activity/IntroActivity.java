@@ -1,6 +1,7 @@
 package com.example.bsy.initialquiz_1.Activity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 
 
 import com.example.bsy.initialquiz_1.Database.QuizBaseHelper;
+import com.example.bsy.initialquiz_1.Font.FontBaseActivity;
 import com.example.bsy.initialquiz_1.Item.Quiz;
 import com.example.bsy.initialquiz_1.R;
 import com.example.bsy.initialquiz_1.databinding.ActivityIntroBinding;
@@ -73,17 +75,6 @@ public class IntroActivity extends AppCompatActivity implements RewardedVideoAdL
             }
         });
 
-        /*Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent intent = new Intent(IntroActivity.this, QuizActivity.class);
-                startActivity(intent);
-
-                finish();
-            }
-        }, 3000);*/
-
     }
 
     private void InitialCheck() {
@@ -99,17 +90,39 @@ public class IntroActivity extends AppCompatActivity implements RewardedVideoAdL
             //DB활성화
             QuizBaseHelper quizBaseHelper = new QuizBaseHelper(this);
 
-            quizBaseHelper.addQuiz(new Quiz(1, "선풍기", "여름", "회전"));
-            quizBaseHelper.addQuiz(new Quiz(2, "모니터", "컴퓨터", "화면"));
-            quizBaseHelper.addQuiz(new Quiz(3, "자스민", "커피", "부산대"));
-            quizBaseHelper.addQuiz(new Quiz(2, "휴대폰", "삼성", "애플"));
-            quizBaseHelper.addQuiz(new Quiz(1, "컴퓨터", "키보드", "마우스"));
+            quizBaseHelper.addQuiz(new Quiz(1, "선풍기", "여름", "회전", "에어컨"));
+            quizBaseHelper.addQuiz(new Quiz(2, "모니터", "컴퓨터", "화면", "마우스"));
+            quizBaseHelper.addQuiz(new Quiz(3, "자스민", "커피", "부산대", "초록색"));
+            quizBaseHelper.addQuiz(new Quiz(2, "휴대폰", "삼성", "애플", "LG"));
+            quizBaseHelper.addQuiz(new Quiz(1, "컴퓨터", "키보드", "마우스", "모니터"));
+
+            addShortcut(this);
 
             Log.d("@@@", "최초실행");
 
         } else {
             Log.d("@@@", "최초실행이 아님");
         }
+
+    }
+
+    private void addShortcut(Context context) {
+        Intent shortcutIntent = new Intent(Intent.ACTION_MAIN);
+        shortcutIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+        shortcutIntent.setClassName(context, getClass().getName());
+        shortcutIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
+
+        Intent intent = new Intent();
+        intent.putExtra(Intent.EXTRA_SHORTCUT_INTENT, shortcutIntent);
+        intent.putExtra(Intent.EXTRA_SHORTCUT_NAME,
+                getResources().getString(R.string.app_name));
+        /*intent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE,
+                Intent.ShortcutIconResource.fromContext(context,
+                        R.mipmap.ic_l_lol));*/
+        intent.putExtra("duplicate", false);
+        intent.setAction("com.android.launcher.action.INSTALL_SHORTCUT");
+
+        sendBroadcast(intent);
 
     }
 

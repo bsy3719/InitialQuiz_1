@@ -28,6 +28,7 @@ public class QuizBaseHelper extends SQLiteOpenHelper {
     private static final String ANSWER = "answer";
     private static final String HINT_1 = "hint_1";
     private static final String HINT_2 = "hint_2";
+    private static final String HINT_3 = "hint_3";
 
     public QuizBaseHelper(Context context){
         super(context, DATABASE_NAME, null, VERSION);
@@ -43,7 +44,8 @@ public class QuizBaseHelper extends SQLiteOpenHelper {
                 TYPE+","+
                 ANSWER+","+
                 HINT_1+","+
-                HINT_2+")");
+                HINT_2+","+
+                HINT_3+")");
 
     }
 
@@ -64,6 +66,7 @@ public class QuizBaseHelper extends SQLiteOpenHelper {
         values.put(ANSWER, quiz.getAnswer());
         values.put(HINT_1, quiz.getHint_1());
         values.put(HINT_2, quiz.getHint_2());
+        values.put(HINT_3, quiz.getHint_3());
         db.insert(TABLE, null, values);
         db.close();
     }
@@ -72,7 +75,7 @@ public class QuizBaseHelper extends SQLiteOpenHelper {
     public Quiz getQuiz(int id){
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = db.query(TABLE, new String[] { ID, ANSWER, HINT_1, HINT_2 },
+        Cursor cursor = db.query(TABLE, new String[] { ID, TYPE, ANSWER, HINT_1, HINT_2, HINT_3 },
                 ID + "=?",
                 new String[] { String.valueOf(id) }, null, null, null, null);
 
@@ -83,7 +86,8 @@ public class QuizBaseHelper extends SQLiteOpenHelper {
                 Integer.parseInt(cursor.getString(1)),
                 cursor.getString(2),
                 cursor.getString(3),
-                cursor.getString(4));
+                cursor.getString(4),
+                cursor.getString(5));
 
         return quiz;
 
@@ -107,6 +111,7 @@ public class QuizBaseHelper extends SQLiteOpenHelper {
                 quiz.setAnswer(cursor.getString(2));
                 quiz.setHint_1(cursor.getString(3));
                 quiz.setHint_2(cursor.getString(4));
+                quiz.setHint_3(cursor.getString(5));
                 // Adding contact to list
                 quizs.add(quiz);
             } while (cursor.moveToNext());

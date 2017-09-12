@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.bsy.initialquiz_1.Database.RankBaseHelper;
+import com.example.bsy.initialquiz_1.Font.FontBaseActivity;
 import com.example.bsy.initialquiz_1.Item.MethodUtils;
 import com.example.bsy.initialquiz_1.Item.Rank;
 import com.example.bsy.initialquiz_1.ListView.RankAdapter;

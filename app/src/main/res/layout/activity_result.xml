@@ -89,18 +89,6 @@
                 app:scale_width="150"
                 />
 
-            <!--<ListView
-                android:id="@+id/result_ListView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:scale_top="550"
-                app:scale_left="540"
-                app:scale_height="350"
-                app:scale_width="400"
-                app:scale_left_baseposition="center"
-                /> -->
-
-
             <ImageView
                 android:id="@+id/restart_Button"
                 android:layout_width="wrap_content"

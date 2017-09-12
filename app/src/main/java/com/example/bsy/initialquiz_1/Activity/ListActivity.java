@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.bsy.initialquiz_1.Database.RankBaseHelper;
+import com.example.bsy.initialquiz_1.Font.FontBaseActivity;
 import com.example.bsy.initialquiz_1.Item.Rank;
 import com.example.bsy.initialquiz_1.ListView.RankAdapter;
 import com.example.bsy.initialquiz_1.R;
@@ -30,11 +31,12 @@ public class ListActivity extends AppCompatActivity {
         mBinding.adView.loadAd(adRequest);
 
         //리스트 어댑터 등록
+        mBinding.resultListView.setDivider(null);
         mBinding.resultListView.setAdapter(mRankAdapter);
 
         RankBaseHelper rankBaseHelper = new RankBaseHelper(this);
 
-        ranks = rankBaseHelper.getTenRank();
+        ranks = rankBaseHelper.getFiveRank();
 
         for (int i = 0; i < ranks.size(); i++){
             mRankAdapter.addItem(i+1, ranks.get(i).getName(), ranks.get(i).getCnt());

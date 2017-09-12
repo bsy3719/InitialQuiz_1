@@ -8,8 +8,8 @@
     <com.ssomai.android.scalablelayout.ScalableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:scale_base_height="200"
-        app:scale_base_width="1080">
+        app:scale_base_height="100"
+        app:scale_base_width="800">
 
         <TextView
             android:id="@+id/rank_TextView"
@@ -18,11 +18,11 @@
             android:text="1"
             android:textColor="@color/colorBlack"
             android:gravity="center"
-            app:scale_textsize="60"
-            app:scale_top="100"
+            app:scale_textsize="40"
+            app:scale_top="50"
             app:scale_left="40"
-            app:scale_height="70"
-            app:scale_width="70"
+            app:scale_height="60"
+            app:scale_width="40"
             app:scale_top_baseposition="center"/>
 
         <TextView
@@ -31,11 +31,12 @@
             android:layout_height="wrap_content"
             android:text="발자국"
             android:textColor="@color/colorBlack"
-            app:scale_textsize="60"
-            app:scale_top="100"
-            app:scale_left="170"
-            app:scale_height="70"
-            app:scale_width="650"
+            android:gravity="center_vertical"
+            app:scale_textsize="40"
+            app:scale_top="50"
+            app:scale_left="130"
+            app:scale_height="60"
+            app:scale_width="450"
             app:scale_top_baseposition="center"/>
 
         <TextView
@@ -45,11 +46,11 @@
             android:text="15개"
             android:textColor="@color/colorBlack"
             android:gravity="center"
-            app:scale_textsize="60"
-            app:scale_top="100"
-            app:scale_left="870"
-            app:scale_height="70"
-            app:scale_width="150"
+            app:scale_textsize="40"
+            app:scale_top="50"
+            app:scale_left="630"
+            app:scale_height="60"
+            app:scale_width="100"
             app:scale_top_baseposition="center"/>
 
 
