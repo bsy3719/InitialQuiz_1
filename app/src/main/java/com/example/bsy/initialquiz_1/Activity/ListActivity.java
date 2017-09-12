@@ -9,6 +9,7 @@ import com.example.bsy.initialquiz_1.Item.Rank;
 import com.example.bsy.initialquiz_1.ListView.RankAdapter;
 import com.example.bsy.initialquiz_1.R;
 import com.example.bsy.initialquiz_1.databinding.ActivityListBinding;
+import com.google.android.gms.ads.AdRequest;
 
 import java.util.ArrayList;
 
@@ -24,6 +25,11 @@ public class ListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_list);
 
+        //배너 광고
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mBinding.adView.loadAd(adRequest);
+
+        //리스트 어댑터 등록
         mBinding.resultListView.setAdapter(mRankAdapter);
 
         RankBaseHelper rankBaseHelper = new RankBaseHelper(this);

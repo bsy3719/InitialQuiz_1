@@ -47,6 +47,8 @@ public class ResultActivity extends AppCompatActivity {
         AdRequest request = new AdRequest.Builder().build();
         mInterstitialAd.loadAd(request);
 
+        mBinding.adView.loadAd(request);
+
         //전면광고 reload하는 부분
         mInterstitialAd.setAdListener(new AdListener() {
             @Override
@@ -58,7 +60,7 @@ public class ResultActivity extends AppCompatActivity {
             @Override
             public void onAdLoaded() {
                 // Code to be executed when an ad finishes loading.
-                if (methodUtils.getPlayCnt() == 3 && mInterstitialAd.isLoaded()){
+                if (methodUtils.getPlayCnt() == 2 && mInterstitialAd.isLoaded()){
                     mInterstitialAd.show();
                     methodUtils.setPlayCnt(0);
                 }

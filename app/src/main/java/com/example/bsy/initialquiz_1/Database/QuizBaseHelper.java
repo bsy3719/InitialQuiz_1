@@ -1,7 +1,9 @@
 package com.example.bsy.initialquiz_1.Database;
 
+import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -35,17 +37,20 @@ public class QuizBaseHelper extends SQLiteOpenHelper {
     //db만들때 한번만 호출
     @Override
     public void onCreate(SQLiteDatabase db) {
+        Log.d("@@@", "DB onCreate");
         db.execSQL("create table " + TABLE+"("+
                 ID+" integer primary key autoincrement, " +
                 TYPE+","+
                 ANSWER+","+
                 HINT_1+","+
                 HINT_2+")");
+
     }
 
     //버전이 업데이트 되는 경우
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE);
         onCreate(db);
     }

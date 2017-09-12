@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:ads="http://schemas.android.com/apk/res-auto">
 
-<RelativeLayout
+<LinearLayout
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <com.ssomai.android.scalablelayout.ScalableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:scale_base_height="1600"
+        app:scale_base_height="1572"
         app:scale_base_width="1080">
 
         <ImageView
@@ -199,7 +201,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/colorGray"
-            app:scale_top="1300"
+            app:scale_top="1275"
             app:scale_left="540"
             app:scale_height="3"
             app:scale_width="600"
@@ -209,7 +211,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/ic_vpn_key_black_24dp"
-            app:scale_top="1350"
+            app:scale_top="1300"
             app:scale_left="270"
             app:scale_height="120"
             app:scale_width="120"
@@ -220,7 +222,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/ic_lightbulb_outline_black_24dp"
-            app:scale_top="1350"
+            app:scale_top="1300"
             app:scale_left="810"
             app:scale_height="120"
             app:scale_width="120"
@@ -229,6 +231,15 @@
 
     </com.ssomai.android.scalablelayout.ScalableLayout>
 
-</RelativeLayout>
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_ad_unit_id">
+    </com.google.android.gms.ads.AdView>
+
+</LinearLayout>
 
 </layout>

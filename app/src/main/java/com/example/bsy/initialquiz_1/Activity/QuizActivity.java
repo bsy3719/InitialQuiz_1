@@ -20,6 +20,7 @@ import com.example.bsy.initialquiz_1.Item.MethodUtils;
 import com.example.bsy.initialquiz_1.Item.Quiz;
 import com.example.bsy.initialquiz_1.R;
 import com.example.bsy.initialquiz_1.databinding.ActivityQuizBinding;
+import com.google.android.gms.ads.AdRequest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +50,11 @@ public class QuizActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_quiz);
+
+        //배너 광고
+        //배너 광고
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mBinding.adView.loadAd(adRequest);
 
         settingDB();
 
