@@ -2,7 +2,7 @@ package com.example.bsy.initialquiz_1.Font;
 
 import android.app.Application;
 
-import com.tsengvn.typekit.Typekit;
+
 
 /**
  * Created by bsy on 2017-09-12.

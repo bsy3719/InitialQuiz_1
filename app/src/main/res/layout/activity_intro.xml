@@ -30,7 +30,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="초 성 퀴 즈"
+                    android:text="초 성 게 임"
                     android:gravity="center"
                     android:textColor="@color/colorBlack"
                     android:textStyle="bold"
