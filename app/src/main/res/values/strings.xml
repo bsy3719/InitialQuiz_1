@@ -1,8 +1,15 @@
 <resources>
     <string name="app_name">초성게임</string>
-    <string name="app_key">ca-app-pub-4711336970766023~9674070775</string>
-    <string name="reward_ad">ca-app-pub-4711336970766023/9889870801</string>
-    <string name="test_reward_ad">ca-app-pub-3940256099942544/5224354917</string>
-    <string name="test_interstitial_ad">ca-app-pub-3940256099942544/1033173712</string>
-    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+
+    <string name="app_id">ca-app-pub-3992465302306146~9017768108</string>
+    <string name="app_id_test">ca-app-pub-3940256099942544~3347511713</string>
+
+    <string name="reward">ca-app-pub-3992465302306146/2629164162</string>
+    <string name="reward_test">ca-app-pub-3940256099942544/5224354917</string>
+
+    <string name="banner">ca-app-pub-3992465302306146/7225162528</string>
+    <string name="banner_test">ca-app-pub-3940256099942544/6300978111</string>
+
+    <string name="interstitial">ca-app-pub-3992465302306146/6854639197</string>
+    <string name="interstitial_test">ca-app-pub-3940256099942544/1033173712</string>
 </resources>

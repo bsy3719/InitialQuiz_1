@@ -34,8 +34,9 @@ public class IntroActivity extends AppCompatActivity implements RewardedVideoAdL
     private ActivityIntroBinding mBinding;
     private RewardedVideoAd mRewardedAd;
 
+    private static final String APP_ID = "ca-app-pub-3940256099942544~3347511713";
     private static final String AD_UNIT_ID = "ca-app-pub-3940256099942544/5224354917";
-    private static final String APP_ID = "ca-app-pub-4711336970766023~9674070775";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,7 +85,7 @@ public class IntroActivity extends AppCompatActivity implements RewardedVideoAdL
         AssetManager assetManager = getAssets();
         InputStream inputStream = null;
         try {
-            inputStream = assetManager.open("DB3.csv");
+            inputStream = assetManager.open("DB4.csv");
             inputStream.skip(3);
         } catch (IOException e) {
             e.printStackTrace();
@@ -110,10 +111,8 @@ public class IntroActivity extends AppCompatActivity implements RewardedVideoAdL
                     splitedStr[i] = splitedStr[i].trim();
                 }
 
-
                 //자른 데이터를 원하는 형식에 맞게 넣기
                 quizBaseHelper.addQuiz(new Quiz(Integer.parseInt(splitedStr[0]), splitedStr[1], splitedStr[2], splitedStr[3], splitedStr[4]));
-
 
             }
 
@@ -147,7 +146,6 @@ public class IntroActivity extends AppCompatActivity implements RewardedVideoAdL
 
     }
 
-
     private void addShortcut(Context context) {
         Intent shortcutIntent = new Intent(Intent.ACTION_MAIN);
         shortcutIntent.addCategory(Intent.CATEGORY_LAUNCHER);
@@ -159,8 +157,7 @@ public class IntroActivity extends AppCompatActivity implements RewardedVideoAdL
         intent.putExtra(Intent.EXTRA_SHORTCUT_NAME,
                 getResources().getString(R.string.app_name));
         intent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE,
-                Intent.ShortcutIconResource.fromContext(context,
-                        R.drawable.icon));
+                Intent.ShortcutIconResource.fromContext(context, R.mipmap.icon));
         intent.putExtra("duplicate", false);
         intent.setAction("com.android.launcher.action.INSTALL_SHORTCUT");
 
@@ -169,9 +166,10 @@ public class IntroActivity extends AppCompatActivity implements RewardedVideoAdL
     }
 
     private void loadRewardedVideoAd() {
-        //if (!mRewardedAd.isLoaded()) {
+        if (!mRewardedAd.isLoaded()) {
+            //mRewardedAd.loadAd(AD_UNIT_ID, new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build());
             mRewardedAd.loadAd(AD_UNIT_ID, new AdRequest.Builder().build());
-        //}
+        }
     }
 
     // Required to reward the user.
@@ -199,7 +197,7 @@ public class IntroActivity extends AppCompatActivity implements RewardedVideoAdL
     }
 
     @Override
-    public void onRewardedVideoAdFailedToLoad(int errorCode) {
+        public void onRewardedVideoAdFailedToLoad(int errorCode) {
         Toast.makeText(this, "onRewardedVideoAdFailedToLoad / errorCode = " + String.valueOf(errorCode), Toast.LENGTH_SHORT).show();
 
     }

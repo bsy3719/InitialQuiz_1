@@ -45,6 +45,7 @@ public class ResultActivity extends AppCompatActivity {
         //전면광고
         mInterstitialAd = new InterstitialAd(this);
         mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+
         AdRequest request = new AdRequest.Builder().build();
         mInterstitialAd.loadAd(request);
 

@@ -165,7 +165,7 @@
             app:scale_top="700"
             app:scale_left="540"
             app:scale_height="100"
-            app:scale_width="300"
+            app:scale_width="700"
             app:scale_left_baseposition="center"/>
 
         <TextView
@@ -177,9 +177,9 @@
             android:gravity="center"
             app:scale_textsize="50"
             app:scale_top="830"
-            app:scale_left="270"
+            app:scale_left="310"
             app:scale_height="100"
-            app:scale_width="300"
+            app:scale_width="400"
             app:scale_left_baseposition="center"
             />
 
@@ -202,9 +202,9 @@
             android:gravity="center"
             app:scale_textsize="50"
             app:scale_top="830"
-            app:scale_left="810"
+            app:scale_left="770"
             app:scale_height="100"
-            app:scale_width="300"
+            app:scale_width="400"
             app:scale_left_baseposition="center"
             />
 
@@ -265,7 +265,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center"
         ads:adSize="BANNER"
-        ads:adUnitId="@string/banner_ad_unit_id">
+        ads:adUnitId="@string/banner_test">
     </com.google.android.gms.ads.AdView>
 
 </LinearLayout>
