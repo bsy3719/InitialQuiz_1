@@ -57,6 +57,8 @@ public class QuizBaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+
+
     //새로운 quiz 추가
     public void addQuiz(Quiz quiz){
         SQLiteDatabase db = this.getWritableDatabase();

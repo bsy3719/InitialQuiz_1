@@ -4,8 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.AssetManager;
 import android.databinding.DataBindingUtil;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,9 +13,7 @@ import android.view.View;
 import android.widget.Toast;
 
 
-
 import com.example.bsy.initialquiz_1.Database.QuizBaseHelper;
-import com.example.bsy.initialquiz_1.Font.FontBaseActivity;
 import com.example.bsy.initialquiz_1.Item.Quiz;
 import com.example.bsy.initialquiz_1.R;
 import com.example.bsy.initialquiz_1.databinding.ActivityIntroBinding;
@@ -25,7 +23,11 @@ import com.google.android.gms.ads.reward.RewardItem;
 import com.google.android.gms.ads.reward.RewardedVideoAd;
 import com.google.android.gms.ads.reward.RewardedVideoAdListener;
 
-import java.io.File;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 public class IntroActivity extends AppCompatActivity implements RewardedVideoAdListener {
 
@@ -77,6 +79,53 @@ public class IntroActivity extends AppCompatActivity implements RewardedVideoAdL
 
     }
 
+    public void loadDB() {
+
+        AssetManager assetManager = getAssets();
+        InputStream inputStream = null;
+        try {
+            inputStream = assetManager.open("DB3.csv");
+            inputStream.skip(3);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        String[] splitedStr = null;
+
+        QuizBaseHelper quizBaseHelper = new QuizBaseHelper(this);
+
+        try {
+            //한글 깨짐현상 때문에 인코딩
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
+
+            String line = null;
+            splitedStr = null;
+
+            while ((line = reader.readLine()) != null) {
+
+                splitedStr = null;
+                splitedStr = line.split(",");
+
+                for (int i = 0; i < splitedStr.length; i++) {
+                    splitedStr[i] = splitedStr[i].trim();
+                }
+
+
+                //자른 데이터를 원하는 형식에 맞게 넣기
+                quizBaseHelper.addQuiz(new Quiz(Integer.parseInt(splitedStr[0]), splitedStr[1], splitedStr[2], splitedStr[3], splitedStr[4]));
+
+
+            }
+
+            reader.close();
+
+        } catch (FileNotFoundException fnf) {
+            fnf.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void InitialCheck() {
 
         //최초 실행 여부 판단하는 구문
@@ -87,15 +136,7 @@ public class IntroActivity extends AppCompatActivity implements RewardedVideoAdL
             editor.putBoolean("isInitial", true);
             editor.commit();
 
-            //DB활성화
-            QuizBaseHelper quizBaseHelper = new QuizBaseHelper(this);
-
-            quizBaseHelper.addQuiz(new Quiz(1, "선풍기", "여름", "회전", "에어컨"));
-            quizBaseHelper.addQuiz(new Quiz(2, "모니터", "컴퓨터", "화면", "마우스"));
-            quizBaseHelper.addQuiz(new Quiz(3, "자스민", "커피", "부산대", "초록색"));
-            quizBaseHelper.addQuiz(new Quiz(2, "휴대폰", "삼성", "애플", "LG"));
-            quizBaseHelper.addQuiz(new Quiz(1, "컴퓨터", "키보드", "마우스", "모니터"));
-
+            loadDB();
             addShortcut(this);
 
             Log.d("@@@", "최초실행");
@@ -105,6 +146,7 @@ public class IntroActivity extends AppCompatActivity implements RewardedVideoAdL
         }
 
     }
+
 
     private void addShortcut(Context context) {
         Intent shortcutIntent = new Intent(Intent.ACTION_MAIN);
@@ -116,9 +158,9 @@ public class IntroActivity extends AppCompatActivity implements RewardedVideoAdL
         intent.putExtra(Intent.EXTRA_SHORTCUT_INTENT, shortcutIntent);
         intent.putExtra(Intent.EXTRA_SHORTCUT_NAME,
                 getResources().getString(R.string.app_name));
-        /*intent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE,
+        intent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE,
                 Intent.ShortcutIconResource.fromContext(context,
-                        R.mipmap.ic_l_lol));*/
+                        R.drawable.icon));
         intent.putExtra("duplicate", false);
         intent.setAction("com.android.launcher.action.INSTALL_SHORTCUT");
 
