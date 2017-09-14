@@ -83,10 +83,10 @@ public class RankBaseHelper extends SQLiteOpenHelper {
     }
 
     //모든 rank 정보 상위 3개 가져오기
-    public ArrayList<Rank> getFiveRank(){
+    public ArrayList<Rank> getThreeRank(){
         ArrayList <Rank> ranks = new ArrayList<Rank>();
         // Select All Query
-        String selectQuery = "SELECT  * FROM " + TABLE + " order by cnt desc limit 0,4";
+        String selectQuery = "SELECT  * FROM " + TABLE + " order by cnt desc limit 0,2";
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);

@@ -32,6 +32,7 @@ public class QuizActivity extends AppCompatActivity {
     private ActivityQuizBinding mBinding;
 
     private ArrayList<Quiz> quizs = new ArrayList<Quiz>();
+    private int[] randoms;
 
     private MethodUtils methodUtils = MethodUtils.getInstance();
 
@@ -52,7 +53,6 @@ public class QuizActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_quiz);
 
-        //배너 광고
         //배너 광고
         AdRequest adRequest = new AdRequest.Builder().build();
         mBinding.adView.loadAd(adRequest);
@@ -81,6 +81,7 @@ public class QuizActivity extends AppCompatActivity {
                     toast.setGravity(Gravity.CENTER, 0, 150);
                     toast.show();
 
+                    quizs.remove(mCurrentIndex);
                     updateQuiz();
 
                 } else {
@@ -115,6 +116,7 @@ public class QuizActivity extends AppCompatActivity {
                     toast.setGravity(Gravity.CENTER, 0, 150);
                     toast.show();
 
+                    quizs.remove(mCurrentIndex);
                     updateQuiz();
 
                 } else {
@@ -132,8 +134,8 @@ public class QuizActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                //mBinding.initialTextView.setText(quizs.get(mCurrentIndex).getHint_answer());
-                mBinding.initialTextView.setText(methodUtils.getHintInitial(quizs.get(mCurrentIndex).getAnswer()));
+                mBinding.hint3TextView.setVisibility(View.VISIBLE);
+                mBinding.hint3ImageView.setVisibility(View.VISIBLE);
 
             }
         });
@@ -142,18 +144,19 @@ public class QuizActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                mBinding.hint3TextView.setVisibility(View.VISIBLE);
-                mBinding.hint3ImageView.setVisibility(View.VISIBLE);
-
+                mBinding.initialTextView.setText(methodUtils.getHintInitial(quizs.get(mCurrentIndex).getAnswer()));
             }
         });
 
-        /*handler = new Handler() {
+        mBinding.passImageView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void handleMessage(Message msg) {
-                Toast.makeText(QuizActivity.this, "0초", Toast.LENGTH_SHORT).show();
+            public void onClick(View view) {
+
+                quizs.remove(mCurrentIndex);
+                updateQuiz();
+
             }
-        };*/
+        });
 
     }
     //onCreate 끝
@@ -210,6 +213,7 @@ public class QuizActivity extends AppCompatActivity {
 
         Random random = new Random();
         mCurrentIndex = random.nextInt(quizs.size());
+
         mBinding.answerEditText.setText("");
 
         switch (quizs.get(mCurrentIndex).getType()){
@@ -217,10 +221,19 @@ public class QuizActivity extends AppCompatActivity {
                 mBinding.categoryTextView.setText("영화");
                 break;
             case 2:
-                mBinding.categoryTextView.setText("음식");
+                mBinding.categoryTextView.setText("드라마");
                 break;
             case 3:
                 mBinding.categoryTextView.setText("연예인");
+                break;
+            case 4:
+                mBinding.categoryTextView.setText("음식");
+                break;
+            case 5:
+                mBinding.categoryTextView.setText("브랜드");
+                break;
+            case 6:
+                mBinding.categoryTextView.setText("사자성어");
                 break;
         }
 

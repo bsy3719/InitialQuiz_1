@@ -36,7 +36,7 @@ public class ListActivity extends AppCompatActivity {
 
         RankBaseHelper rankBaseHelper = new RankBaseHelper(this);
 
-        ranks = rankBaseHelper.getFiveRank();
+        ranks = rankBaseHelper.getThreeRank();
 
         for (int i = 0; i < ranks.size(); i++){
             mRankAdapter.addItem(i+1, ranks.get(i).getName(), ranks.get(i).getCnt());

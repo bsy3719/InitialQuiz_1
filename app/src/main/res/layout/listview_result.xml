@@ -8,7 +8,7 @@
     <com.ssomai.android.scalablelayout.ScalableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:scale_base_height="100"
+        app:scale_base_height="170"
         app:scale_base_width="800">
 
         <TextView
@@ -18,10 +18,10 @@
             android:text="1"
             android:textColor="@color/colorBlack"
             android:gravity="center"
-            app:scale_textsize="40"
-            app:scale_top="50"
+            app:scale_textsize="50"
+            app:scale_top="85"
             app:scale_left="40"
-            app:scale_height="60"
+            app:scale_height="80"
             app:scale_width="40"
             app:scale_top_baseposition="center"/>
 
@@ -32,10 +32,10 @@
             android:text="발자국"
             android:textColor="@color/colorBlack"
             android:gravity="center_vertical"
-            app:scale_textsize="40"
-            app:scale_top="50"
+            app:scale_textsize="50"
+            app:scale_top="85"
             app:scale_left="130"
-            app:scale_height="60"
+            app:scale_height="80"
             app:scale_width="450"
             app:scale_top_baseposition="center"/>
 
@@ -44,13 +44,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="15개"
-            android:textColor="@color/colorBlack"
             android:gravity="center"
-            app:scale_textsize="40"
-            app:scale_top="50"
-            app:scale_left="630"
-            app:scale_height="60"
-            app:scale_width="100"
+            app:scale_textsize="50"
+            app:scale_top="85"
+            app:scale_left="620"
+            app:scale_height="80"
+            app:scale_width="150"
             app:scale_top_baseposition="center"/>
 
 

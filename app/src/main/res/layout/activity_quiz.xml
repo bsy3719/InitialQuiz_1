@@ -66,9 +66,9 @@
             android:layout_height="wrap_content"
             android:textColor="@color/colorBlack"
             android:gravity="center"
-            android:text="30"
+            android:text="100"
             app:scale_top="30"
-            app:scale_left="940"
+            app:scale_left="950"
             app:scale_height="100"
             app:scale_width="100"
             app:scale_textsize="55"/>
@@ -152,6 +152,17 @@
             app:scale_height="130"
             app:scale_width="300"
             app:scale_left_baseposition="center"
+            />
+
+        <ImageView
+            android:id="@+id/pass_ImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_forward_black_24dp"
+            app:scale_top="550"
+            app:scale_left="750"
+            app:scale_height="130"
+            app:scale_width="130"
             />
 
         <TextView

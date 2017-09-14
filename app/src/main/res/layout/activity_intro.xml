@@ -79,7 +79,7 @@
                     android:id="@+id/ads_Button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="광고보기"
+                    android:text="코인얻기"
                     android:textStyle="bold"
                     android:textColor="@color/colorWhite"
                     android:background="@color/colorMainGreen"

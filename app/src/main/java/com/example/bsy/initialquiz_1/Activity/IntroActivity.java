@@ -85,7 +85,7 @@ public class IntroActivity extends AppCompatActivity implements RewardedVideoAdL
         AssetManager assetManager = getAssets();
         InputStream inputStream = null;
         try {
-            inputStream = assetManager.open("DB4.csv");
+            inputStream = assetManager.open("DB6.csv");
             inputStream.skip(3);
         } catch (IOException e) {
             e.printStackTrace();
