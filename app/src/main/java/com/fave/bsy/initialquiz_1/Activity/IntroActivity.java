@@ -1,4 +1,4 @@
-package com.example.bsy.initialquiz_1.Activity;
+package com.fave.bsy.initialquiz_1.Activity;
 
 import android.app.Activity;
 import android.content.Context;
@@ -8,15 +8,14 @@ import android.content.res.AssetManager;
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 
-import com.example.bsy.initialquiz_1.Database.QuizBaseHelper;
-import com.example.bsy.initialquiz_1.Item.Quiz;
-import com.example.bsy.initialquiz_1.R;
-import com.example.bsy.initialquiz_1.databinding.ActivityIntroBinding;
+import com.fave.bsy.initialquiz_1.Database.QuizBaseHelper;
+import com.fave.bsy.initialquiz_1.Item.Quiz;
+import com.fave.bsy.initialquiz_1.R;
+import com.fave.bsy.initialquiz_1.databinding.ActivityIntroBinding;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.reward.RewardItem;

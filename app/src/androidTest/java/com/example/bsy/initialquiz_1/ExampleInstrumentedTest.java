@@ -1,4 +1,4 @@
-package com.example.bsy.initialquiz_1;
+package com.fave.bsy.initialquiz_1;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

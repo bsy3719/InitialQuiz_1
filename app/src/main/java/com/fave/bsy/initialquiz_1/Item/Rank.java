@@ -1,4 +1,4 @@
-package com.example.bsy.initialquiz_1.Item;
+package com.fave.bsy.initialquiz_1.Item;
 
 /**
  * Created by bsy on 2017-09-10.

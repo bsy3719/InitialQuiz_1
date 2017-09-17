@@ -1,4 +1,4 @@
-package com.example.bsy.initialquiz_1.Font;
+package com.fave.bsy.initialquiz_1.Font;
 
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;

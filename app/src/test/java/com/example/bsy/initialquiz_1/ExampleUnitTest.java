@@ -1,4 +1,4 @@
-package com.example.bsy.initialquiz_1;
+package com.fave.bsy.initialquiz_1;
 
 import org.junit.Test;
 

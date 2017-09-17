@@ -1,15 +1,13 @@
-package com.example.bsy.initialquiz_1.Database;
+package com.fave.bsy.initialquiz_1.Database;
 
-import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import com.example.bsy.initialquiz_1.Item.Quiz;
+import com.fave.bsy.initialquiz_1.Item.Quiz;
 
 import java.util.ArrayList;
 

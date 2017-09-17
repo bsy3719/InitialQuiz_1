@@ -1,25 +1,20 @@
-package com.example.bsy.initialquiz_1.Activity;
+package com.fave.bsy.initialquiz_1.Activity;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.bsy.initialquiz_1.Database.RankBaseHelper;
-import com.example.bsy.initialquiz_1.Font.FontBaseActivity;
-import com.example.bsy.initialquiz_1.Item.MethodUtils;
-import com.example.bsy.initialquiz_1.Item.Rank;
-import com.example.bsy.initialquiz_1.ListView.RankAdapter;
-import com.example.bsy.initialquiz_1.R;
-import com.example.bsy.initialquiz_1.databinding.ActivityResultBinding;
+import com.fave.bsy.initialquiz_1.Database.RankBaseHelper;
+import com.fave.bsy.initialquiz_1.Item.MethodUtils;
+import com.fave.bsy.initialquiz_1.Item.Rank;
+import com.fave.bsy.initialquiz_1.R;
+import com.fave.bsy.initialquiz_1.databinding.ActivityResultBinding;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
-
-import java.util.ArrayList;
 
 public class ResultActivity extends AppCompatActivity {
 

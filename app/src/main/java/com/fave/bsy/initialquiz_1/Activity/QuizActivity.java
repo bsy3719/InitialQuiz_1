@@ -1,4 +1,4 @@
-package com.example.bsy.initialquiz_1.Activity;
+package com.fave.bsy.initialquiz_1.Activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,7 +6,6 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
@@ -15,16 +14,14 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.bsy.initialquiz_1.Database.QuizBaseHelper;
-import com.example.bsy.initialquiz_1.Font.FontBaseActivity;
-import com.example.bsy.initialquiz_1.Item.MethodUtils;
-import com.example.bsy.initialquiz_1.Item.Quiz;
-import com.example.bsy.initialquiz_1.R;
-import com.example.bsy.initialquiz_1.databinding.ActivityQuizBinding;
+import com.fave.bsy.initialquiz_1.Database.QuizBaseHelper;
+import com.fave.bsy.initialquiz_1.Item.MethodUtils;
+import com.fave.bsy.initialquiz_1.Item.Quiz;
+import com.fave.bsy.initialquiz_1.R;
+import com.fave.bsy.initialquiz_1.databinding.ActivityQuizBinding;
 import com.google.android.gms.ads.AdRequest;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class QuizActivity extends AppCompatActivity {

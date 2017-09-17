@@ -1,15 +1,14 @@
-package com.example.bsy.initialquiz_1.Activity;
+package com.fave.bsy.initialquiz_1.Activity;
 
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.example.bsy.initialquiz_1.Database.RankBaseHelper;
-import com.example.bsy.initialquiz_1.Font.FontBaseActivity;
-import com.example.bsy.initialquiz_1.Item.Rank;
-import com.example.bsy.initialquiz_1.ListView.RankAdapter;
-import com.example.bsy.initialquiz_1.R;
-import com.example.bsy.initialquiz_1.databinding.ActivityListBinding;
+import com.fave.bsy.initialquiz_1.Database.RankBaseHelper;
+import com.fave.bsy.initialquiz_1.Item.Rank;
+import com.fave.bsy.initialquiz_1.ListView.RankAdapter;
+import com.fave.bsy.initialquiz_1.R;
+import com.fave.bsy.initialquiz_1.databinding.ActivityListBinding;
 import com.google.android.gms.ads.AdRequest;
 
 import java.util.ArrayList;
