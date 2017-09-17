@@ -34,8 +34,8 @@ public class IntroActivity extends AppCompatActivity implements RewardedVideoAdL
     private ActivityIntroBinding mBinding;
     private RewardedVideoAd mRewardedAd;
 
-    private static final String APP_ID = "ca-app-pub-3940256099942544~3347511713";
-    private static final String AD_UNIT_ID = "ca-app-pub-3940256099942544/5224354917";
+    private static final String APP_ID = "ca-app-pub-3992465302306146~9017768108";
+    private static final String AD_UNIT_ID = "ca-app-pub-3992465302306146/2629164162";
 
 
     @Override
@@ -85,7 +85,7 @@ public class IntroActivity extends AppCompatActivity implements RewardedVideoAdL
         AssetManager assetManager = getAssets();
         InputStream inputStream = null;
         try {
-            inputStream = assetManager.open("DB6.csv");
+            inputStream = assetManager.open("DB.csv");
             inputStream.skip(3);
         } catch (IOException e) {
             e.printStackTrace();
@@ -138,10 +138,10 @@ public class IntroActivity extends AppCompatActivity implements RewardedVideoAdL
             loadDB();
             addShortcut(this);
 
-            Log.d("@@@", "최초실행");
+            //Log.d("@@@", "최초실행");
 
         } else {
-            Log.d("@@@", "최초실행이 아님");
+            //Log.d("@@@", "최초실행이 아님");
         }
 
     }
@@ -185,37 +185,37 @@ public class IntroActivity extends AppCompatActivity implements RewardedVideoAdL
     // The following listener methods are optional.
     @Override
     public void onRewardedVideoAdLeftApplication() {
-        Toast.makeText(this, "onRewardedVideoAdLeftApplication",
-                Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "onRewardedVideoAdLeftApplication",
+         //       Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onRewardedVideoAdClosed() {
         mBinding.adsButton.setEnabled(false);
         loadRewardedVideoAd();
-        Toast.makeText(this, "onRewardedVideoAdClosed", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "onRewardedVideoAdClosed", Toast.LENGTH_SHORT).show();
     }
 
     @Override
         public void onRewardedVideoAdFailedToLoad(int errorCode) {
-        Toast.makeText(this, "onRewardedVideoAdFailedToLoad / errorCode = " + String.valueOf(errorCode), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "onRewardedVideoAdFailedToLoad / errorCode = " + String.valueOf(errorCode), Toast.LENGTH_SHORT).show();
 
     }
 
     @Override
     public void onRewardedVideoAdLoaded() {
         mBinding.adsButton.setEnabled(true);
-        Toast.makeText(this, "onRewardedVideoAdLoaded", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "onRewardedVideoAdLoaded", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onRewardedVideoAdOpened() {
-        Toast.makeText(this, "onRewardedVideoAdOpened", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "onRewardedVideoAdOpened", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onRewardedVideoStarted() {
-        Toast.makeText(this, "onRewardedVideoStarted", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "onRewardedVideoStarted", Toast.LENGTH_SHORT).show();
     }
     @Override
     public void onResume() {

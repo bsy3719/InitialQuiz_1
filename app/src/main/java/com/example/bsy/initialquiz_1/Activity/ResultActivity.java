@@ -44,7 +44,7 @@ public class ResultActivity extends AppCompatActivity {
 
         //전면광고
         mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        mInterstitialAd.setAdUnitId("ca-app-pub-3992465302306146/6854639197");
 
         AdRequest request = new AdRequest.Builder().build();
         mInterstitialAd.loadAd(request);
@@ -115,7 +115,7 @@ public class ResultActivity extends AppCompatActivity {
 
         if (mEnrollCheck == false){
 
-            Log.d("@@@", "DB 추가 완료");
+            //Log.d("@@@", "DB 추가 완료");
             String name = mBinding.nameEditText.getText().toString();
 
             RankBaseHelper rankBaseHelper = new RankBaseHelper(this);

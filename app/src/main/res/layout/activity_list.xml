@@ -45,7 +45,7 @@
             android:layout_height="match_parent"
             app:scale_top="400"
             app:scale_left="540"
-            app:scale_height="510"
+            app:scale_height="530"
             app:scale_width="800"
             app:scale_left_baseposition="center"/>
 
@@ -57,7 +57,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center"
         ads:adSize="BANNER"
-        ads:adUnitId="@string/banner_test">
+        ads:adUnitId="@string/banner">
     </com.google.android.gms.ads.AdView>
 
 

@@ -112,7 +112,7 @@ public class QuizActivity extends AppCompatActivity {
                     time = time + 3;
                     mBinding.timerTextView.setText(String.valueOf(time)+"s");
 
-                    toast = Toast.makeText(QuizActivity.this, String.valueOf(quizs.get(mCurrentIndex).getId()) +"번문제 정답!!!", Toast.LENGTH_SHORT);
+                    toast = Toast.makeText(QuizActivity.this, "정답!!!", Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 150);
                     toast.show();
 
@@ -152,6 +152,7 @@ public class QuizActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                time = time - 1;
                 quizs.remove(mCurrentIndex);
                 updateQuiz();
 
@@ -193,7 +194,7 @@ public class QuizActivity extends AppCompatActivity {
 
                     } catch (InterruptedException e) { }
 
-                    if (time == 0){
+                    if (time <= 0){
                         Intent intent = new Intent(QuizActivity.this, ResultActivity.class);
                         intent.putExtra("answerCnt", String.valueOf(answerCnt));
                         startActivity(intent);
@@ -233,6 +234,9 @@ public class QuizActivity extends AppCompatActivity {
                 mBinding.categoryTextView.setText("브랜드");
                 break;
             case 6:
+                mBinding.categoryTextView.setText("우리말");
+                break;
+            case 7:
                 mBinding.categoryTextView.setText("사자성어");
                 break;
         }
@@ -269,7 +273,7 @@ public class QuizActivity extends AppCompatActivity {
 
     @Override
     protected void onStart() {
-        Log.d(TAG, "onStart");
+        //Log.d(TAG, "onStart");
         updateQuiz();
         runProgressBar();
         super.onStart();
@@ -277,7 +281,7 @@ public class QuizActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        Log.d(TAG, "onResume");
+        //Log.d(TAG, "onResume");
 
         //키보드 자동실행
         mBinding.answerEditText.postDelayed(new Runnable() {
@@ -292,19 +296,19 @@ public class QuizActivity extends AppCompatActivity {
 
     @Override
     protected void onPause() {
-        Log.d(TAG, "onPause");
+        //Log.d(TAG, "onPause");
         super.onPause();
     }
 
     @Override
     protected void onStop() {
-        Log.d(TAG, "onStop");
+        //Log.d(TAG, "onStop");
         super.onStop();
     }
 
     @Override
     protected void onDestroy() {
-        Log.d(TAG, "onDestroy");
+        //Log.d(TAG, "onDestroy");
         resetQuiz();
         super.onDestroy();
     }

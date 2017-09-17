@@ -276,7 +276,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center"
         ads:adSize="BANNER"
-        ads:adUnitId="@string/banner_test">
+        ads:adUnitId="@string/banner">
     </com.google.android.gms.ads.AdView>
 
 </LinearLayout>
