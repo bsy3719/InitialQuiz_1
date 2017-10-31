@@ -7,39 +7,24 @@
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorMainBlue">
+    android:background="@color/colorWhite">
 
         <com.ssomai.android.scalablelayout.ScalableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:scale_base_height="1600"
+            app:scale_base_height="1700"
             app:scale_base_width="1080"
             >
 
                 <ImageView
+                    android:background="@drawable/title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/light"
                     app:scale_top="200"
                     app:scale_left="540"
-                    app:scale_height="1080"
-                    app:scale_width="1080"
-                    app:scale_textsize="65"
-                    app:scale_left_baseposition="center"/>
-
-                <TextView
-                    android:id="@+id/Title_TextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="초 성 게 임"
-                    android:gravity="center"
-                    android:textColor="@color/colorBlack"
-                    android:textStyle="bold"
-                    app:scale_top="300"
-                    app:scale_left="540"
-                    app:scale_height="150"
-                    app:scale_width="600"
-                    app:scale_textsize="100"
+                    app:scale_height="450"
+                    app:scale_width="640"
+                    app:scale_textsize="50"
                     app:scale_left_baseposition="center"
                     />
 
@@ -47,15 +32,15 @@
                     android:id="@+id/start_Button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="시작"
+                    android:text="그냥 시작"
                     android:textStyle="bold"
                     android:textColor="@color/colorWhite"
-                    android:background="@color/colorMainGreen"
-                    app:scale_top="1150"
+                    android:background="@drawable/border_rounded_button"
+                    app:scale_top="700"
                     app:scale_left="540"
                     app:scale_height="120"
                     app:scale_width="350"
-                    app:scale_textsize="55"
+                    app:scale_textsize="50"
                     app:scale_left_baseposition="center"
                     />
 
@@ -63,35 +48,43 @@
                     android:id="@+id/list_Button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="랭킹보기"
+                    android:text="몇등?"
                     android:textStyle="bold"
                     android:textColor="@color/colorWhite"
-                    android:background="@color/colorMainGreen"
-                    app:scale_top="1300"
-                    app:scale_left="540"
+                    android:background="@drawable/border_rounded_button"
+                    app:scale_top="840"
+                    app:scale_left="180"
                     app:scale_height="120"
                     app:scale_width="350"
-                    app:scale_textsize="55"
-                    app:scale_left_baseposition="center"
+                    app:scale_textsize="50"
                     />
 
                 <Button
                     android:id="@+id/ads_Button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="코인얻기"
+                    android:text="포인트?"
                     android:textStyle="bold"
                     android:textColor="@color/colorWhite"
-                    android:background="@color/colorMainGreen"
-                    app:scale_top="1450"
-                    app:scale_left="540"
+                    android:background="@drawable/border_rounded_button"
+                    app:scale_top="840"
+                    app:scale_left="550"
                     app:scale_height="120"
                     app:scale_width="350"
-                    app:scale_textsize="55"
-                    app:scale_left_baseposition="center"
+                    app:scale_textsize="50"
                     />
 
+
+
         </com.ssomai.android.scalablelayout.ScalableLayout>
+
+        <ImageView
+            android:layout_width="350dp"
+            android:layout_height="220dp"
+            android:background="@drawable/intro_image"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            app:scale_left_baseposition="center"/>
 
 </RelativeLayout>
 

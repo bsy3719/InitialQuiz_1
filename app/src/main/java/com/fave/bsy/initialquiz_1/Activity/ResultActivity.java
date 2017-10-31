@@ -22,8 +22,8 @@ public class ResultActivity extends AppCompatActivity {
     private InterstitialAd mInterstitialAd;
     private MethodUtils methodUtils = MethodUtils.getInstance();
 
-    private int mAnswerCnt;
-    private boolean mEnrollCheck = false;
+    private int mAnswerCnt = 0;
+    private boolean mEnrollFlag = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +39,7 @@ public class ResultActivity extends AppCompatActivity {
 
         //전면광고
         mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId("ca-app-pub-3992465302306146/6854639197");
+        mInterstitialAd.setAdUnitId("ca-app-pub-3992465302306146/9324258970");
 
         AdRequest request = new AdRequest.Builder().build();
         mInterstitialAd.loadAd(request);
@@ -67,8 +67,8 @@ public class ResultActivity extends AppCompatActivity {
         mBinding.restartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent tempIntent = new Intent(ResultActivity.this, QuizActivity.class);
-                startActivity(tempIntent);
+                Intent intent = new Intent(ResultActivity.this, QuizActivity.class);
+                startActivity(intent);
                 finish();
             }
         });
@@ -94,9 +94,15 @@ public class ResultActivity extends AppCompatActivity {
         mBinding.confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (mEnrollCheck == false){
+                if (mEnrollFlag == false){
                     addRank();
+
                     Toast.makeText(ResultActivity.this, "기록이 등록되었습니다.", Toast.LENGTH_SHORT).show();
+
+                    Intent intent = new Intent(ResultActivity.this, IntroActivity.class);
+                    startActivity(intent);
+                    finish();
+
                 }else{
                     Toast.makeText(ResultActivity.this, "기록은 한번만 등록 가능합니다.", Toast.LENGTH_SHORT).show();
                 }
@@ -108,21 +114,22 @@ public class ResultActivity extends AppCompatActivity {
 
     private void addRank(){
 
-        if (mEnrollCheck == false){
-
-            //Log.d("@@@", "DB 추가 완료");
+        if (mEnrollFlag == false){
             String name = mBinding.nameEditText.getText().toString();
 
-            RankBaseHelper rankBaseHelper = new RankBaseHelper(this);
+            if(name==null||name.equals("")){
 
-            rankBaseHelper.addRank(new Rank(mAnswerCnt, name));
+                name = "이름없음";
+                RankBaseHelper rankBaseHelper = new RankBaseHelper(this);
+                rankBaseHelper.addRank(new Rank(mAnswerCnt, name));
+            }else{
+                RankBaseHelper rankBaseHelper = new RankBaseHelper(this);
+                rankBaseHelper.addRank(new Rank(mAnswerCnt, name));
+            }
 
         }
 
-        mEnrollCheck = true;
-
-
-
+        mEnrollFlag = true;
     }
 
     @Override

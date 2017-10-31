@@ -43,7 +43,7 @@
                 android:id="@+id/name_EditText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="이름없음"
+                android:hint="이름없음"
                 android:textColor="@color/colorBlack"
                 android:gravity="center"
                 android:windowSoftInputMode="stateAlwaysHidden"
@@ -72,11 +72,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:background="@drawable/ic_check_circle_black_24dp"
-                app:scale_top="600"
+                android:background="@drawable/check"
+                app:scale_top="590"
                 app:scale_left="750"
-                app:scale_height="100"
-                app:scale_width="100"/>
+                app:scale_height="120"
+                app:scale_width="150"/>
 
             <Button
                 android:id="@+id/confirm_Button"
@@ -86,7 +86,7 @@
                 app:scale_top="575"
                 app:scale_left="725"
                 app:scale_height="150"
-                app:scale_width="150"
+                app:scale_width="200"
                 />
 
             <ImageView
@@ -94,6 +94,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/ic_refresh_black_24dp"
+                android:visibility="gone"
                 app:scale_top="1100"
                 app:scale_left="270"
                 app:scale_height="120"
@@ -106,6 +107,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/ic_home_black_24dp"
+                android:visibility="gone"
                 app:scale_top="1100"
                 app:scale_left="540"
                 app:scale_height="120"
@@ -118,6 +120,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/ic_format_list_numbered_black_24dp"
+                android:visibility="gone"
                 app:scale_top="1100"
                 app:scale_left="810"
                 app:scale_height="120"

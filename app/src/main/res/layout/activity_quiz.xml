@@ -31,8 +31,22 @@
             android:layout_height="wrap_content"
             android:textColor="@color/colorBlack"
             android:gravity="center"
-            android:text="60s"
+            android:text="120"
             app:scale_top="30"
+            app:scale_left="110"
+            app:scale_height="100"
+            app:scale_width="100"
+            app:scale_textsize="55"/>
+
+        <TextView
+            android:id="@+id/addTime_TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorBlack"
+            android:gravity="center"
+            android:visibility="invisible"
+            android:text="+5"
+            app:scale_top="100"
             app:scale_left="110"
             app:scale_height="100"
             app:scale_width="100"
@@ -129,13 +143,39 @@
             android:gravity="center"
             android:textStyle="bold"
             android:textColor="@color/colorWhite"
-            android:background="@color/colorMainGreen"
+            android:background="@drawable/border_rounded_count"
             android:text="0개"
             app:scale_textsize="60"
             app:scale_top="400"
             app:scale_left="820"
             app:scale_height="100"
             app:scale_width="150"/>
+
+        <TextView
+            android:id="@+id/initial_TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ㄷㄷㄷ"
+            android:textColor="@color/colorBlack"
+            android:gravity="center"
+            app:scale_textsize="80"
+            app:scale_top="550"
+            app:scale_left="540"
+            app:scale_height="100"
+            app:scale_width="700"
+            app:scale_left_baseposition="center"/>
+
+        <Button
+            android:id="@+id/confirm_Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/check"
+            app:scale_top="735"
+            app:scale_left="800"
+            app:scale_height="120"
+            app:scale_width="160"
+            app:scale_textsize="55"
+            app:scale_top_baseposition="center"/>
 
         <EditText
             android:id="@+id/answer_EditText"
@@ -147,37 +187,12 @@
             android:inputType="text"
             android:background="@drawable/border_rounded"
             app:scale_textsize="60"
-            app:scale_top="550"
+            app:scale_top="670"
             app:scale_left="540"
             app:scale_height="130"
             app:scale_width="300"
             app:scale_left_baseposition="center"
             />
-
-        <ImageView
-            android:id="@+id/pass_ImageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_forward_black_24dp"
-            app:scale_top="550"
-            app:scale_left="750"
-            app:scale_height="130"
-            app:scale_width="130"
-            />
-
-        <TextView
-            android:id="@+id/initial_TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ㄷㄷㄷ"
-            android:textColor="@color/colorBlack"
-            android:gravity="center"
-            app:scale_textsize="80"
-            app:scale_top="700"
-            app:scale_left="540"
-            app:scale_height="100"
-            app:scale_width="700"
-            app:scale_left_baseposition="center"/>
 
         <TextView
             android:id="@+id/hint1_TextView"
@@ -219,20 +234,17 @@
             app:scale_left_baseposition="center"
             />
 
-        <Button
-            android:id="@+id/confirm_Button"
+        <ImageView
+            android:id="@+id/pass_ImageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="확인"
-            android:textStyle="bold"
-            android:textColor="@color/colorWhite"
-            android:background="@color/colorMainGreen"
-            app:scale_top="1100"
+            android:background="@drawable/pass"
+            app:scale_top="1070"
             app:scale_left="540"
-            app:scale_height="120"
-            app:scale_width="350"
-            app:scale_textsize="55"
+            app:scale_height="130"
+            app:scale_width="220"
             app:scale_left_baseposition="center"/>
+
 
         <View
             android:layout_width="wrap_content"

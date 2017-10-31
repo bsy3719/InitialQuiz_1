@@ -8,6 +8,7 @@ import android.content.res.AssetManager;
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -34,7 +35,7 @@ public class IntroActivity extends AppCompatActivity implements RewardedVideoAdL
     private RewardedVideoAd mRewardedAd;
 
     private static final String APP_ID = "ca-app-pub-3992465302306146~9017768108";
-    private static final String AD_UNIT_ID = "ca-app-pub-3992465302306146/2629164162";
+    private static final String AD_UNIT_ID = "ca-app-pub-3992465302306146/8063804739";
 
 
     @Override
@@ -72,6 +73,8 @@ public class IntroActivity extends AppCompatActivity implements RewardedVideoAdL
 
                 if (mRewardedAd.isLoaded()) {
                     mRewardedAd.show();
+                }else{
+                    Toast.makeText(getBaseContext(), "잠시 후 다시 시도해주세요.", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -84,7 +87,7 @@ public class IntroActivity extends AppCompatActivity implements RewardedVideoAdL
         AssetManager assetManager = getAssets();
         InputStream inputStream = null;
         try {
-            inputStream = assetManager.open("DB.csv");
+            inputStream = assetManager.open("DB5.csv");
             inputStream.skip(3);
         } catch (IOException e) {
             e.printStackTrace();
@@ -129,44 +132,57 @@ public class IntroActivity extends AppCompatActivity implements RewardedVideoAdL
         //최초 실행 여부 판단하는 구문
         SharedPreferences pref = getSharedPreferences("isInitial", Activity.MODE_PRIVATE);
         boolean initial = pref.getBoolean("isInitial", false);
+        
         if (initial == false) {
-            SharedPreferences.Editor editor = pref.edit();
-            editor.putBoolean("isInitial", true);
-            editor.commit();
 
             loadDB();
             addShortcut(this);
 
             //Log.d("@@@", "최초실행");
 
-        } else {
-            //Log.d("@@@", "최초실행이 아님");
+            SharedPreferences.Editor editor = pref.edit();
+            editor.putBoolean("isInitial", true);
+            editor.commit();
+
         }
 
     }
 
     private void addShortcut(Context context) {
-        Intent shortcutIntent = new Intent(Intent.ACTION_MAIN);
-        shortcutIntent.addCategory(Intent.CATEGORY_LAUNCHER);
-        shortcutIntent.setClassName(context, getClass().getName());
-        shortcutIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
+        SharedPreferences pref = getSharedPreferences("pref", MODE_PRIVATE);
+        boolean check = pref.getBoolean("check", false);
+        
+        if (check == false){
+            Intent shortcutIntent = new Intent(Intent.ACTION_MAIN);
+            shortcutIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+            shortcutIntent.setClassName(context, getClass().getName());
+            shortcutIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
 
-        Intent intent = new Intent();
-        intent.putExtra(Intent.EXTRA_SHORTCUT_INTENT, shortcutIntent);
-        intent.putExtra(Intent.EXTRA_SHORTCUT_NAME,
-                getResources().getString(R.string.app_name));
-        intent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE,
-                Intent.ShortcutIconResource.fromContext(context, R.mipmap.icon));
-        intent.putExtra("duplicate", false);
-        intent.setAction("com.android.launcher.action.INSTALL_SHORTCUT");
+            Intent intent = new Intent();
+            intent.putExtra(Intent.EXTRA_SHORTCUT_INTENT, shortcutIntent);
+            intent.putExtra(Intent.EXTRA_SHORTCUT_NAME,
+                    getResources().getString(R.string.app_name));
+            intent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE,
+                    Intent.ShortcutIconResource.fromContext(context, R.mipmap.icon));
+            intent.putExtra("duplicate", false);
+            intent.setAction("com.android.launcher.action.INSTALL_SHORTCUT");
 
-        sendBroadcast(intent);
+            sendBroadcast(intent);
+
+            SharedPreferences.Editor editor = pref.edit();
+            editor.putBoolean("check", true);
+            editor.commit();
+
+
+        }
+        
+        
+        
 
     }
 
     private void loadRewardedVideoAd() {
         if (!mRewardedAd.isLoaded()) {
-            //mRewardedAd.loadAd(AD_UNIT_ID, new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build());
             mRewardedAd.loadAd(AD_UNIT_ID, new AdRequest.Builder().build());
         }
     }
@@ -174,10 +190,17 @@ public class IntroActivity extends AppCompatActivity implements RewardedVideoAdL
     // Required to reward the user.
     @Override
     public void onRewarded(RewardItem reward) {
-        Toast.makeText(this,
-                String.format(" onRewarded! currency: %s amount: %d", reward.getType(),
+        /*Toast.makeText(this,
+                String.format("onRewarded! currency: %s amount: %d", reward.getType(),
                         reward.getAmount()),
-                Toast.LENGTH_SHORT).show();
+                Toast.LENGTH_SHORT).show();*/
+
+        SharedPreferences pref = getSharedPreferences("coin", Activity.MODE_PRIVATE);
+        int coin = pref.getInt("coin", 100);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putInt("coin", coin +100);
+        editor.commit();
+
         // Reward the user.
     }
 
@@ -186,19 +209,21 @@ public class IntroActivity extends AppCompatActivity implements RewardedVideoAdL
     public void onRewardedVideoAdLeftApplication() {
         //Toast.makeText(this, "onRewardedVideoAdLeftApplication",
          //       Toast.LENGTH_SHORT).show();
+
     }
 
     @Override
     public void onRewardedVideoAdClosed() {
         mBinding.adsButton.setEnabled(false);
         loadRewardedVideoAd();
+        Toast.makeText(this, "100코인을 획득했습니다.", Toast.LENGTH_SHORT).show();
         //Toast.makeText(this, "onRewardedVideoAdClosed", Toast.LENGTH_SHORT).show();
     }
 
     @Override
         public void onRewardedVideoAdFailedToLoad(int errorCode) {
         //Toast.makeText(this, "onRewardedVideoAdFailedToLoad / errorCode = " + String.valueOf(errorCode), Toast.LENGTH_SHORT).show();
-
+        Toast.makeText(this, "100코인을 획득했습니다.", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -216,6 +241,7 @@ public class IntroActivity extends AppCompatActivity implements RewardedVideoAdL
     public void onRewardedVideoStarted() {
         //Toast.makeText(this, "onRewardedVideoStarted", Toast.LENGTH_SHORT).show();
     }
+
     @Override
     public void onResume() {
         mRewardedAd.resume(this);

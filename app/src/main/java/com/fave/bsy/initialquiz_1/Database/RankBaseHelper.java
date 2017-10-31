@@ -84,7 +84,7 @@ public class RankBaseHelper extends SQLiteOpenHelper {
     public ArrayList<Rank> getThreeRank(){
         ArrayList <Rank> ranks = new ArrayList<Rank>();
         // Select All Query
-        String selectQuery = "SELECT  * FROM " + TABLE + " order by cnt desc limit 0,2";
+        String selectQuery = "SELECT  * FROM " + TABLE + " order by cnt desc limit 0,8";
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
