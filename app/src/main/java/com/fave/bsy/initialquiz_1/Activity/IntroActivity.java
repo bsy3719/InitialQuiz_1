@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 
 import com.fave.bsy.initialquiz_1.Database.QuizBaseHelper;
+import com.fave.bsy.initialquiz_1.Item.Preferences;
 import com.fave.bsy.initialquiz_1.Item.Quiz;
 import com.fave.bsy.initialquiz_1.R;
 import com.fave.bsy.initialquiz_1.databinding.ActivityIntroBinding;
@@ -36,7 +37,6 @@ public class IntroActivity extends AppCompatActivity implements RewardedVideoAdL
 
     private static final String APP_ID = "ca-app-pub-3992465302306146~9017768108";
     private static final String AD_UNIT_ID = "ca-app-pub-3992465302306146/8063804739";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,7 +102,6 @@ public class IntroActivity extends AppCompatActivity implements RewardedVideoAdL
             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
 
             String line = null;
-            splitedStr = null;
 
             while ((line = reader.readLine()) != null) {
 
@@ -130,19 +129,25 @@ public class IntroActivity extends AppCompatActivity implements RewardedVideoAdL
     private void InitialCheck() {
 
         //최초 실행 여부 판단하는 구문
-        SharedPreferences pref = getSharedPreferences("isInitial", Activity.MODE_PRIVATE);
-        boolean initial = pref.getBoolean("isInitial", false);
+        //SharedPreferences pref = getSharedPreferences("isInitial", Activity.MODE_PRIVATE);
+        //boolean initial = pref.getBoolean("isInitial", false);
+
+        boolean initial = Preferences.getPrefInitial(IntroActivity.this);
         
-        if (initial == false) {
+        if (initial) {
 
             loadDB();
-            addShortcut(this);
+            //addShortcut(this);
 
-            //Log.d("@@@", "최초실행");
+            Log.d("@@@", "최초실행");
 
-            SharedPreferences.Editor editor = pref.edit();
+            /*SharedPreferences.Editor editor = pref.edit();
             editor.putBoolean("isInitial", true);
-            editor.commit();
+            editor.commit();*/
+
+            Preferences.setPrefInitial(IntroActivity.this, false);
+
+
 
         }
 
@@ -190,16 +195,15 @@ public class IntroActivity extends AppCompatActivity implements RewardedVideoAdL
     // Required to reward the user.
     @Override
     public void onRewarded(RewardItem reward) {
-        /*Toast.makeText(this,
-                String.format("onRewarded! currency: %s amount: %d", reward.getType(),
-                        reward.getAmount()),
-                Toast.LENGTH_SHORT).show();*/
 
-        SharedPreferences pref = getSharedPreferences("coin", Activity.MODE_PRIVATE);
+        /*SharedPreferences pref = getSharedPreferences("coin", Activity.MODE_PRIVATE);
         int coin = pref.getInt("coin", 100);
         SharedPreferences.Editor editor = pref.edit();
         editor.putInt("coin", coin +100);
-        editor.commit();
+        editor.commit();*/
+
+        int coin = Preferences.getPreCoin(IntroActivity.this);
+        Preferences.setPreCoin(IntroActivity.this, coin + 100);
 
         // Reward the user.
     }

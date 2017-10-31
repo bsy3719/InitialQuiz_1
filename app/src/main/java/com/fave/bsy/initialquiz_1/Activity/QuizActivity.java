@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.fave.bsy.initialquiz_1.Database.QuizBaseHelper;
 import com.fave.bsy.initialquiz_1.Item.MethodUtils;
+import com.fave.bsy.initialquiz_1.Item.Preferences;
 import com.fave.bsy.initialquiz_1.Item.Quiz;
 import com.fave.bsy.initialquiz_1.R;
 import com.fave.bsy.initialquiz_1.databinding.ActivityQuizBinding;
@@ -96,20 +97,18 @@ public class QuizActivity extends AppCompatActivity {
 
                 mBinding.keyImageView.setEnabled(false);
 
-                SharedPreferences pref = getSharedPreferences("coin", Activity.MODE_PRIVATE);
-                int coin = pref.getInt("coin", 100);
+                int coin = Preferences.getPreCoin(QuizActivity.this);
 
-                if (coin>30){
+                if (coin>=30){
                     mBinding.hint3TextView.setVisibility(View.VISIBLE);
                     mBinding.hint3ImageView.setVisibility(View.VISIBLE);
 
-                    coin = coin -30;
+                    coin = coin - 30;
 
-                    SharedPreferences.Editor editor = pref.edit();
-                    editor.putInt("coin", coin);
-                    editor.commit();
+                    Preferences.setPreCoin(QuizActivity.this,coin);
 
                     mBinding.coinTextView.setText(String.valueOf(coin));
+
                 }else{
 
                     toast = Toast.makeText(QuizActivity.this, "코인이 부족합니다.", Toast.LENGTH_SHORT);
@@ -127,19 +126,17 @@ public class QuizActivity extends AppCompatActivity {
 
                 mBinding.lightImageView.setEnabled(false);
 
-                SharedPreferences pref = getSharedPreferences("coin", Activity.MODE_PRIVATE);
-                int coin = pref.getInt("coin", 100);
+                int coin = Preferences.getPreCoin(QuizActivity.this);
 
-                if (coin>30){
+                if (coin>=30){
                     mBinding.initialTextView.setText(MethodUtils.getHintInitial(quizs.get(mCurrentIndex).getAnswer()));
 
-                    coin = coin -30;
+                    coin = coin - 30;
 
-                    SharedPreferences.Editor editor = pref.edit();
-                    editor.putInt("coin", coin);
-                    editor.commit();
+                    Preferences.setPreCoin(QuizActivity.this,coin);
 
                     mBinding.coinTextView.setText(String.valueOf(coin));
+
                 }else{
 
                     toast = Toast.makeText(QuizActivity.this, "코인이 부족합니다.", Toast.LENGTH_SHORT);
@@ -264,8 +261,10 @@ public class QuizActivity extends AppCompatActivity {
         quizs = quizBaseHelper.getAllQuiz();
 
         //코인 셋팅
-        SharedPreferences pref = getSharedPreferences("coin", Activity.MODE_PRIVATE);
-        int coin = pref.getInt("coin", 100);
+        //SharedPreferences pref = getSharedPreferences("coin", Activity.MODE_PRIVATE);
+        //int coin = pref.getInt("coin", 100);
+
+        int coin = Preferences.getPreCoin(QuizActivity.this);
 
         mBinding.coinTextView.setText(String.valueOf(coin));
     }
